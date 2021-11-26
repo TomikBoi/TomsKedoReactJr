@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router";
-import HomePageContainer from "./pages/homepage.container";
+import CategoryPageContainer from "./pages/categorypage/categorypage.container";
+import HomePageContainer from "./pages/homepage/homepage.container";
 
 class App extends React.Component {
   state = {
@@ -15,14 +16,12 @@ class App extends React.Component {
     return (
       <div className="App">
         <Switch>
+          <Route exact path="/" component={HomePageContainer} />
           <Route
             exact
-            path="/"
-            render={() => {
-              return <Redirect to="/tech" />;
-            }}
+            path="/category/:categoryId"
+            component={CategoryPageContainer}
           />
-          <Route exact path="/:categoryId" component={HomePageContainer} />
         </Switch>
       </div>
     );

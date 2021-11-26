@@ -1,15 +1,6 @@
 import React from "react";
 import './loading.styles.scss'
-const styles = {
-  content: {
-    fontSize: '35px',
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    marginTop: '20px',
-    textAlign: 'center'
-  }
-}
+
 
 export default class Loading extends React.Component {
    state = {
@@ -45,3 +36,4 @@ Loading.defaultProps = {
   text: "Loading",
   speed: 300
 }
+

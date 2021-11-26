@@ -1,0 +1,15 @@
+.category-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 100px 0px; 
+  grid-auto-flow: row;
+  justify-items: center;
+}
+
+.category-text {
+  color: #1d1f22;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  padding-left: 60px;
+}

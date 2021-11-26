@@ -3,10 +3,10 @@ import React from "react";
 import { gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 import { Redirect } from "react-router-dom";
-import HomePage from "./homepage.component";
-import Loading from "../components/loading/loading.component";
+import CategoryPage from "./categorypage.component";
+import Loading from "../../components/loading/loading.component"
 
-class HomePageContainer extends React.Component {
+export default class CategoryPageContainer extends React.Component {
   render() {
     const GET_ITEMS = gql`
       query ($category: String!) {
@@ -39,7 +39,7 @@ class HomePageContainer extends React.Component {
               <Redirect to={{
               pathname: '/'
             }}/>)
-            return <HomePage categoryItems={data.category} />;
+            return <CategoryPage categoryItems={data.category} />;
           }}
         </Query>
       </>
@@ -47,4 +47,3 @@ class HomePageContainer extends React.Component {
   }
 }
 
-export default HomePageContainer;

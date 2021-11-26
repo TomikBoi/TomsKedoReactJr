@@ -1,20 +1,19 @@
 import React from "react";
-import "./homepage.styles.scss";
-import CategoryItem from "../components/category-item/category-item.component";
-import capitalizeFirstLetter from "../helper/capitalizeFirstLetter";
+import "./categorypage.styles.scss";
+import CategoryItem from "../../components/category-item/category-item.component"
+import capitalizeFirstLetter from "../../helper/capitalizeFirstLetter";
 
-class HomePage extends React.Component {
+class CategoryPage extends React.Component {
   render() {
     const { categoryItems } = this.props;
     
-
     return (
-      <div className="homepage">
-        <div className="homepage-container">
-          <h2 className="homepage-category-text">
+      <div className="category">
+        <div className="category-container">
+          <h2 className="category-text">
             {capitalizeFirstLetter(categoryItems.name)}
           </h2>
-          <div className="homepage-items">
+          <div className="category-items">
             {categoryItems.products.map(({ id, name, gallery, prices }) => (
               <CategoryItem
                 key={id}
@@ -30,4 +29,4 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage;
+export default CategoryPage;
