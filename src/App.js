@@ -1,9 +1,8 @@
-import React, { Component } from "react";
-import HomePage from "./pages/homepage.component";
+import React from "react";
+import { Route, Switch, Redirect } from "react-router";
 import HomePageContainer from "./pages/homepage.container";
 
-
-class App extends Component {
+class App extends React.Component {
   state = {
     counter: 0,
   };
@@ -15,7 +14,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-       <HomePageContainer/>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return <Redirect to="/tech" />;
+            }}
+          />
+          <Route exact path="/:categoryId" component={HomePageContainer} />
+        </Switch>
       </div>
     );
   }

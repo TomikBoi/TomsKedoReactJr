@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router";
 import "./category-item.styles.scss";
 
 class CategoryItem extends React.Component {
@@ -19,4 +20,4 @@ class CategoryItem extends React.Component {
   }
 }
 
-export default CategoryItem;
+export default withRouter(CategoryItem);
