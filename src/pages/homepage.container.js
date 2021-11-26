@@ -5,8 +5,8 @@ import { Query } from "@apollo/client/react/components";
 import HomePage from "./homepage.component";
 
 const GET_ITEMS = gql`
-{
-    categories {
+query($category: String!){
+    category(input: {title: $category}) {
       name
       products {
         name
@@ -22,28 +22,17 @@ const GET_ITEMS = gql`
   }
 `;
 
-const GET_CATEGORY = gql`
-  {
-    category(input: { title: "clothes" }) {
-      name
-    }
-  }
-`;
-// <Query query={GET_CATEGORY}>
-// {({ loading, error, data }) => {
-//   if (loading) return <p>Loading</p>;
-//   return <HomePage category={data.category} />;
-// }}
-// </Query>
-
 class HomePageContainer extends React.Component {
+  state ={
+    category: "tech"
+  }
   render() {
     return (
       <>
-        <Query query={GET_ITEMS}>
+        <Query query={GET_ITEMS} variables={{"category": this.state.category}}>
           {({ loading, error, data }) => {
             if (loading) return <p>Loading</p>;
-            return <HomePage items={data.categories} />;
+            return <HomePage categoryItems={data.category} />;
           }}
         </Query>
       </>
