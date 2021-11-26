@@ -1,0 +1,26 @@
+.card {
+  max-height: 255px;
+  width: 265px;
+  padding: 16px;
+
+    &-image {
+      width:  250px;
+      height: 250px;
+      background-size: cover;
+    }
+
+  &-text {
+    font-weight: 300;
+    size: 18px;
+    line-height: 28.8px;
+
+    &-name {
+      margin: 0;
+      font-weight: 300;
+    }
+
+    &-price {
+      font-weight: 500;
+    }
+  }
+}
