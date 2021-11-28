@@ -1,0 +1,15 @@
+.cart-icon {
+  cursor: pointer;
+
+  &-count {
+    font-size: 17px;
+    background: #1D1F22;
+    color: #fff;
+    padding: 0px 5px;
+    vertical-align: top;
+    margin-left: -7px;
+    position: absolute;
+    margin-top: -10px;
+    border-radius: 100%;
+  }
+}

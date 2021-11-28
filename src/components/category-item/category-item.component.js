@@ -20,4 +20,4 @@ class CategoryItem extends React.Component {
   }
 }
 
-export default withRouter(CategoryItem);
+export default CategoryItem;

@@ -1,0 +1,35 @@
+.header {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-categories {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    &-category {
+      padding: 10px 15px;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 120%;
+      text-transform: uppercase;
+    }
+
+  }
+
+  &-currencytcart {
+    display: flex;
+    align-items: center;
+    width: 15%;
+    justify-content: space-evenly;
+
+  }
+}
+
+.active {
+  color: #5ECE7B;
+}
