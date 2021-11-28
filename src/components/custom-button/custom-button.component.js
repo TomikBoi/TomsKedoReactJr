@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 import './custom-button.styles.scss'
 
 const STYLES = [
@@ -18,9 +19,9 @@ class CustomButton extends React.Component {
   render() {
     const {children, type, onClick, buttonStyle, buttonSize} = this.props
 
-    const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : null
+    const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : ''
 
-    const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : null
+    const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : ''
 
     return(
       <button className={`btn ${checkButtonStyle} ${checkButtonSize}`} onClick={onClick} type={type}>

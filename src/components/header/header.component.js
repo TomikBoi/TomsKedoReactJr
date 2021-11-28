@@ -4,7 +4,7 @@ import { ReactComponent as Logo } from "../../assets/logo.svg";
 import {connect} from 'react-redux'
 import CartIcon from "../cart-icon/cart-icon.component";
 import CurrencyIcon from "../currency-icon/currency-icon.component";
-import CustomButton from "../custom-button/custom-button.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import "./header.styles.scss";
 
 class Header extends React.Component {
@@ -32,6 +32,7 @@ class Header extends React.Component {
           <CurrencyIcon />
           <CartIcon />
         </div>
+        <CartDropdown />
       </div>
     );
   }
