@@ -1,0 +1,57 @@
+:root {
+  --green: #5ece7b;
+  --white: #ffffff;
+  --black: #1d1f22;
+}
+
+.btn {
+  font-family: Raleway;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.btn-cart-bag {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.btn-cart-checkout {
+  background-color: var(--green);
+  color: var(--white);
+  border: none;
+}
+
+.btn-item-action {
+  background-color: var(--white);
+  color: var(--black);
+  border: 1px solid #1d1f22;
+  font-weight: 400;
+}
+
+.btn-add-to-cart {
+  background-color: var(--green);
+  color: var(--white);
+  border: none;
+}
+
+.btn-small {
+  width: 24px;
+  height: 24px;
+}
+
+.btn-medium {
+  width: 63px;
+  height: 45px;
+}
+
+.btn-large {
+  font-weight: 600;
+  width: 140px;
+  height: 43px;
+}
+
+.btn-huge {
+  font-weight: 600;
+  width: 292px;
+  height: 52px;
+}
