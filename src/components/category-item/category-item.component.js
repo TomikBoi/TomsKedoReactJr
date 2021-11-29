@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router";
+import {ReactComponent as BuyIcon} from "../../assets/buy-icon.svg"
 import "./category-item.styles.scss";
 
 class CategoryItem extends React.Component {
@@ -14,6 +14,7 @@ class CategoryItem extends React.Component {
         <div className="card-text">
           <p className="card-text-name">{name}</p>
           <span className="card-text-price">{`$${price}`}</span>
+          <BuyIcon className='card-buy-icon' />
         </div>
       </div>
     );

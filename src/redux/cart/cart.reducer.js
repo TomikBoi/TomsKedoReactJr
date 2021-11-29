@@ -13,7 +13,6 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         hidden: !state.hidden
       }
     
-  
     default:
      return state
   }

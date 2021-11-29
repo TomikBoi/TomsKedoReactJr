@@ -2,6 +2,8 @@
   max-height: 255px;
   width: 265px;
   padding: 16px;
+  position: relative;
+  cursor: pointer;
 
     &-image {
       width:  250px;
@@ -23,4 +25,20 @@
       font-weight: 500;
     }
   }
+  &-buy-icon {
+    width: 52px;
+    height: 52px;
+    position: absolute;
+    right: 32px;
+    bottom: -5px;
+    display: none;
+    cursor: pointer;
+  }
+
+  &:hover{
+    .card-buy-icon {
+      display: block;
+    }
+  }
+
 }
