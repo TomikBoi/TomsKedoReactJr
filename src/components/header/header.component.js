@@ -9,6 +9,7 @@ import "./header.styles.scss";
 
 class Header extends React.Component {
   render() {
+    const {hidden} = this.props
     return (
       <div className="header">
         <div className="header-categories">
@@ -32,14 +33,16 @@ class Header extends React.Component {
           <CurrencyIcon />
           <CartIcon />
         </div>
-        <CartDropdown />
+        {
+          hidden ? null : <CartDropdown />
+        }
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  cart: state.cart
+const mapStateToProps = ({cart: {hidden}}) => ({
+  hidden
 })
 
 export default connect(mapStateToProps)(Header)
