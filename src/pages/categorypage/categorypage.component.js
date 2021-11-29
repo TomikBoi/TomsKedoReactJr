@@ -14,12 +14,10 @@ class CategoryPage extends React.Component {
             {capitalizeFirstLetter(categoryItems.name)}
           </h2>
           <div className="category-items">
-            {categoryItems.products.map(({ id, name, gallery, prices }) => (
+            {categoryItems.products.map((item) => (
               <CategoryItem
-                key={id}
-                name={name}
-                prices={prices}
-                gallery={gallery}
+                key={item.id}
+                item={item}
               />
             ))}
           </div>
