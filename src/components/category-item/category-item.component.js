@@ -1,10 +1,13 @@
 import React from "react";
 import {ReactComponent as BuyIcon} from "../../assets/buy-icon.svg"
+import {connect} from 'react-redux'
+import { addItem } from "../../redux/cart/cart.actions";
 import "./category-item.styles.scss";
 
 class CategoryItem extends React.Component {
   render() {
-    const { id, name, gallery, prices } = this.props;
+    const {item, addItem } = this.props;
+    const {name, gallery, prices} = item;
     const price = prices
       .filter((item) => item.currency === "USD")
       .map((filteredItem) => filteredItem.amount);
@@ -14,11 +17,15 @@ class CategoryItem extends React.Component {
         <div className="card-text">
           <p className="card-text-name">{name}</p>
           <span className="card-text-price">{`$${price}`}</span>
-          <BuyIcon className='card-buy-icon' />
+          <BuyIcon className='card-buy-icon' onClick={() => addItem(item)}/>
         </div>
       </div>
     );
   }
 }
 
-export default CategoryItem;
+const mapDispatchToProps = dispatch => ({
+  addItem: item => dispatch(addItem(item))
+})
+
+export default connect(null, mapDispatchToProps)(CategoryItem);

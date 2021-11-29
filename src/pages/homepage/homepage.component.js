@@ -15,12 +15,10 @@ class HomePage extends React.Component {
             {categoryItems
               .map((item) => item.products)
               .map((item) =>
-                item.map(({ id, name, gallery, prices }) => (
+                item.map((item) => (
                   <CategoryItem
-                    key={id}
-                    name={name}
-                    prices={prices}
-                    gallery={gallery}
+                    key={item.id}
+                    item={item}
                   />
                 ))
               )}

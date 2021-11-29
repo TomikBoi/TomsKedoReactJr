@@ -11,14 +11,27 @@ export default class HomePageContainer extends React.Component {
       categories {
         name
         products {
-          name
           id
+          name
+          inStock
           gallery
-          brand
+          description
+          category
+          attributes {
+            id
+            name
+            type
+            items {
+              displayValue
+              value
+              id
+            }
+          }
           prices {
             amount
             currency
           }
+          brand
         }
       }
     }
