@@ -7,12 +7,12 @@ import './cart-icon.styles.scss'
 class CartIcon extends React.Component {
 
   render() {
-    const {toggleCartHidden} = this.props 
+    const {toggleCartHidden, cartItems} = this.props 
 
     return (
       <div className='cart' onClick={toggleCartHidden}>
         <ShoppingIcon className='cart-icon'/>
-        <span className='cart-icon-count'>2</span> 
+        <span className='cart-icon-count'>{cartItems.length}</span> 
       </div>
     )
   }
@@ -22,4 +22,8 @@ const mapDispatchToProps = dispatch => ({
   toggleCartHidden: () => dispatch(toggleCartHidden())
 })
 
-export default connect(null, mapDispatchToProps)(CartIcon);
+const mapStateToProps = ({cart: {cartItems}}) => ({
+  cartItems
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
