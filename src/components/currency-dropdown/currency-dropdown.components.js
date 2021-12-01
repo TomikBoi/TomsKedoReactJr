@@ -6,7 +6,7 @@ import './currency-dropdown.styles.scss'
 
 class CurrencyDropdown extends React.Component {
   render() {
-    const {currencies} = this.props
+    const {currencies, changeCurrency} = this.props
     return(
       <div className='currency-dropown-wrapper'>
         <ul>
