@@ -1,5 +1,6 @@
 import React from "react";
 import CategoryItem from "../../components/category-item/category-item.component"
+import { connect } from "react-redux";
 import "./homepage.styles.scss";
 
 
@@ -29,4 +30,9 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage;
+const mapStateToProps = ({currency: {hiddenCur}}) => ({
+  hiddenCur
+})
+
+export default connect(mapStateToProps)(HomePage)
+

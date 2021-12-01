@@ -1,17 +1,29 @@
 import React from "react";
+import {connect} from 'react-redux'
+import { getCurrencySymbol } from "../../helper/getCurrencySymbol";
+import { toggleCurrencyHidden } from "../../redux/currency/currency.actions";
 
 import './currency-icon.styles.scss'
 
 class CurrencyIcon extends React.Component {
   render() {
+    const {toggleCurrencyHidden, currency} = this.props 
     return (
-      <div className="currency">
+      <div className="currency" onClick={toggleCurrencyHidden}>
         <span>
-          $ <i className="currency-icon-dropdown"></i>
+        {getCurrencySymbol(currency)} <i className="currency-icon-dropdown"></i>
         </span>
       </div>
     );
   }
 }
 
-export default CurrencyIcon;
+const mapDispatchToProps = dispatch => ({
+  toggleCurrencyHidden: () => dispatch(toggleCurrencyHidden())
+})
+
+const mapStateToProps = ({currency: {currency}}) => ({
+  currency
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(CurrencyIcon);

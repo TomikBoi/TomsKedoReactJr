@@ -1,18 +1,20 @@
 import React from "react";
 import CustomButton from "../custom-button/custom-button.component";
+import { connect } from "react-redux";
+import { getCurrencySymbol } from "../../helper/getCurrencySymbol";
 import "./cart-item.styles.scss";
 
 class CartItem extends React.Component {
   render() {
-    const { item } = this.props;
+    const { item, currency } = this.props;
     const price = item.prices
-      .filter((item) => item.currency === "USD")
+      .filter((item) => item.currency === currency)
       .map((filteredItem) => filteredItem.amount);
     return (
       <div className="cart-wrapper">
         <div className="nameprice">
           <p>{item.name}</p>
-          <p>$ {price}</p>
+          <p>{getCurrencySymbol(currency)} {price}</p>
           <div className="nameprice-btn">
           <CustomButton buttonStyle={'btn-item-action'} buttonSize={'btn-small'}><span className='nameprice-attr'>S</span></CustomButton>
           <CustomButton buttonStyle={'btn-item-action'} buttonSize={'btn-small'}><span className='nameprice-attr'>M</span></CustomButton>
@@ -31,4 +33,7 @@ class CartItem extends React.Component {
   }
 }
 
-export default CartItem;
+const mapStateToProps = ({currency: {currency}}) => ({
+  currency
+})
+export default connect(mapStateToProps)(CartItem);

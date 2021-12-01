@@ -5,11 +5,14 @@ import {connect} from 'react-redux'
 import CartIcon from "../cart-icon/cart-icon.component";
 import CurrencyIcon from "../currency-icon/currency-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import CurrencyDropdownContainer from '../currency-dropdown/currency-dropdown.container'
+import {getCurrencySymbol} from "../../helper/getCurrencySymbol";
 import "./header.styles.scss";
 
 class Header extends React.Component {
   render() {
-    const {hidden} = this.props
+    const {hidden, hiddenCur, currency} = this.props
+
     return (
       <div className="header">
         <div className="header-categories">
@@ -32,6 +35,9 @@ class Header extends React.Component {
         <div className="header-currencytcart">
           <CurrencyIcon />
           <CartIcon />
+          {
+            hiddenCur ? null : <CurrencyDropdownContainer />
+          }
         </div>
         {
           hidden ? null : <CartDropdown />
@@ -41,8 +47,10 @@ class Header extends React.Component {
   }
 }
 
-const mapStateToProps = ({cart: {hidden}}) => ({
-  hidden
+const mapStateToProps = ({cart: {hidden}, currency: {hiddenCur, currency}}) => ({
+  hidden,
+  hiddenCur,
+  currency
 })
 
 export default connect(mapStateToProps)(Header)

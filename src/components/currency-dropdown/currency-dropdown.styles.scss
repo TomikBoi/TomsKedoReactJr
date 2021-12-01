@@ -1,0 +1,22 @@
+.currency-dropown-wrapper {
+  position: absolute;
+  width: 114px;
+  padding: 0px 40px 0px 20px;
+  right: 99px;
+  top: 50px;
+  ul {
+    list-style: none;
+    
+  }
+
+  button {
+    background:none; 
+    border:none;
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: right;
+    color: #1d1f22;
+    cursor: pointer;
+  }
+}
