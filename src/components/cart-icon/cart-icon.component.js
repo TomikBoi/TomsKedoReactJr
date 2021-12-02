@@ -7,12 +7,12 @@ import './cart-icon.styles.scss'
 class CartIcon extends React.Component {
 
   render() {
-    const {toggleCartHidden, cartItems} = this.props 
+    const {toggleCartHidden, itemCount} = this.props 
 
     return (
       <div className='cart' onClick={toggleCartHidden}>
         <ShoppingIcon className='cart-icon'/>
-        <span className='cart-icon-count'>{cartItems.length}</span> 
+        <span className='cart-icon-count'>{itemCount}</span> 
       </div>
     )
   }
@@ -23,7 +23,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = ({cart: {cartItems}}) => ({
-  cartItems
+  itemCount: cartItems.reduce((accQuantity, cartItem) => accQuantity + cartItem.quantity, 0)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);

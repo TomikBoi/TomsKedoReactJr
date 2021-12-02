@@ -8,16 +8,16 @@ import './cart-dropdown.styles.scss'
 class CartDropdown extends React.Component {
 
   render() {
-    const {cartItems, currency} = this.props
+    const {cartItems, currency, itemCount} = this.props
     const totalPrice =  cartItems.map(item => item.quantity * item.prices.filter((item) => item.currency === currency)
     .map((filteredItem) => filteredItem.amount))
  
     return (
       <div className='cart-dropdown'>
-        <p className='cart-dropdown-text'><span>My Bag, </span>{cartItems.length} items</p>
+        <p className='cart-dropdown-text'><span>My Bag, </span>{itemCount} items</p>
         <div className='cart-dropdown-items'>
         {
-          cartItems.length === 0 ? <p>Please add a product</p> : 
+          itemCount === 0 ? <p>Please add a product</p> : 
           cartItems.map(cartItem => 
             <CartItem key={cartItem.id} item={cartItem} />)
         }
@@ -40,7 +40,8 @@ class CartDropdown extends React.Component {
 
 const mapStateToProps = ({cart: {cartItems}, currency: {currency}}) => ({
   cartItems,
-  currency
+  currency,
+  itemCount: cartItems.reduce((accQuantity, cartItem) => accQuantity + cartItem.quantity, 0)
 })
 
 export default connect(mapStateToProps)(CartDropdown);
