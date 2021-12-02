@@ -10,8 +10,7 @@ class CurrencyIcon extends React.Component {
     const {toggleCurrencyHidden, currency} = this.props 
     return (
       <div className="currency" onClick={toggleCurrencyHidden}>
-        <span>
-        {getCurrencySymbol(currency)} <i className="currency-icon-dropdown"></i>
+        <span className="currency-icon">{getCurrencySymbol(currency)}</span> <span><i className="currency-icon-dropdown"></i>
         </span>
       </div>
     );

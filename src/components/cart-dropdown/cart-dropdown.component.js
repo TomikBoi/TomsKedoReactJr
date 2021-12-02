@@ -14,7 +14,7 @@ class CartDropdown extends React.Component {
  
     return (
       <div className='cart-dropdown'>
-        <p className='cart-dropdown-text'><span>My Bag,</span>{cartItems.length} items</p>
+        <p className='cart-dropdown-text'><span>My Bag, </span>{cartItems.length} items</p>
         <div className='cart-dropdown-items'>
         {
           cartItems.length === 0 ? <p>Please add a product</p> : 

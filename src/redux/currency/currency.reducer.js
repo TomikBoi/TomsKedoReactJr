@@ -17,6 +17,7 @@ const currencyReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         currency: action.payload,
+        hiddenCur: true
       };
 
     default:
