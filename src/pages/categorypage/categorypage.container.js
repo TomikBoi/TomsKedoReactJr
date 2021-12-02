@@ -1,15 +1,14 @@
 import React from "react";
-
 import { gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 import { Redirect } from "react-router-dom";
 import CategoryPage from "./categorypage.component";
-import Loading from "../../components/loading/loading.component"
+import Loading from "../../components/loading/loading.component";
 
 export default class CategoryPageContainer extends React.Component {
   render() {
     const GET_ITEMS = gql`
-      query ($category: String!) {
+      query Category($category: String!) {
         category(input: { title: $category }) {
           name
           products {
@@ -17,6 +16,16 @@ export default class CategoryPageContainer extends React.Component {
             id
             gallery
             brand
+            attributes {
+              id
+              name
+              type
+              items {
+                displayValue
+                value
+                id
+              }
+            }
             prices {
               amount
               currency
@@ -26,19 +35,23 @@ export default class CategoryPageContainer extends React.Component {
       }
     `;
 
-    const {categoryId} = this.props.match.params
-    if(!categoryId === "tech" || !categoryId === 'clothes') {
-      categoryId = null
+    const { categoryId } = this.props.match.params;
+    if (!categoryId === "tech" || !categoryId === "clothes") {
+      categoryId = null;
     }
     return (
       <>
-        <Query query={GET_ITEMS} variables={{ category: categoryId }}>
+        <Query query={GET_ITEMS} fetchPolicy={"no-cache"} variables={{ category: categoryId }}>
           {({ loading, error, data }) => {
             if (loading) return <Loading text={"Loading products"} />;
-            if(!data.category) return (
-              <Redirect to={{
-              pathname: '/'
-            }}/>)
+            if (!data.category)
+              return (
+                <Redirect
+                  to={{
+                    pathname: "/",
+                  }}
+                />
+              );
             return <CategoryPage categoryItems={data.category} />;
           }}
         </Query>
@@ -46,4 +59,3 @@ export default class CategoryPageContainer extends React.Component {
     );
   }
 }
-

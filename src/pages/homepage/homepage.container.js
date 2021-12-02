@@ -7,16 +7,14 @@ import HomePage from "./homepage.component";
 export default class HomePageContainer extends React.Component {
   render() {
     const GET_ITEMS = gql`
-    {
+     {
       categories {
         name
         products {
-          id
           name
-          inStock
+          id
           gallery
-          description
-          category
+          brand
           attributes {
             id
             name
@@ -31,12 +29,11 @@ export default class HomePageContainer extends React.Component {
             amount
             currency
           }
-          brand
         }
       }
     }
+    
     `;
-
 
     return (
       <>

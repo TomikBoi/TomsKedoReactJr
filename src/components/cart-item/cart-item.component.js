@@ -14,16 +14,37 @@ class CartItem extends React.Component {
       <div className="cart-wrapper">
         <div className="nameprice">
           <p>{item.name}</p>
-          <p>{getCurrencySymbol(currency)} {price}</p>
+          <p>
+            {getCurrencySymbol(currency)} {price}
+          </p>
           <div className="nameprice-btn">
-          <CustomButton buttonStyle={'btn-item-action'} buttonSize={'btn-small'}><span className='nameprice-attr'>S</span></CustomButton>
-          <CustomButton buttonStyle={'btn-item-action'} buttonSize={'btn-small'}><span className='nameprice-attr'>M</span></CustomButton>
+            {item.attributes.map((item) =>
+              item.items.map((item) => (
+                <CustomButton
+                  buttonStyle={"btn-item-action"}
+                  buttonSize={"btn-small"}
+                  key={item.id}
+                >
+                  <span className="nameprice-attr">{item.value}</span>
+                </CustomButton>
+              ))
+            )}
           </div>
         </div>
         <div className="quantity">
-        <CustomButton buttonStyle={'btn-item-action'} buttonSize={'btn-small'}><span className='quantity-btn'>+</span></CustomButton>
+          <CustomButton
+            buttonStyle={"btn-item-action"}
+            buttonSize={"btn-small"}
+          >
+            <span className="quantity-btn">+</span>
+          </CustomButton>
           <p>{item.quantity}</p>
-          <CustomButton buttonStyle={'btn-item-action'} buttonSize={'btn-small'}><span className='quantity-btn'>-</span></CustomButton>
+          <CustomButton
+            buttonStyle={"btn-item-action"}
+            buttonSize={"btn-small"}
+          >
+            <span className="quantity-btn">-</span>
+          </CustomButton>
         </div>
         <div className="img">
           <img src={item.gallery[0]} />
@@ -33,7 +54,7 @@ class CartItem extends React.Component {
   }
 }
 
-const mapStateToProps = ({currency: {currency}}) => ({
-  currency
-})
+const mapStateToProps = ({ currency: { currency } }) => ({
+  currency,
+});
 export default connect(mapStateToProps)(CartItem);

@@ -9,7 +9,23 @@ import store from "./redux/store";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/",
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      
+      Category: {
+        
+        products: {
+          
+          attributes: {
+            
+            items: { 
+              
+            }
+          }
+        }
+      }
+    }
+  }),
 });
 
 ReactDOM.render(

@@ -8,10 +8,8 @@ import './cart-dropdown.styles.scss'
 class CartDropdown extends React.Component {
 
   render() {
-    const {cartItems, currency, itemCount} = this.props
-    const totalPrice =  cartItems.map(item => item.quantity * item.prices.filter((item) => item.currency === currency)
-    .map((filteredItem) => filteredItem.amount))
- 
+    const {cartItems, currency, itemCount, totalPrice} = this.props
+
     return (
       <div className='cart-dropdown'>
         <p className='cart-dropdown-text'><span>My Bag, </span>{itemCount} items</p>
@@ -25,7 +23,7 @@ class CartDropdown extends React.Component {
         <div className='cart-dropdown-total'>
         <span className='cart-dropdown-total-left'>Total: </span><span className='cart-dropdown-total-right'>{getCurrencySymbol(currency)} {
           totalPrice.length > 0 ? 
-          totalPrice.flat().reduce((accumulator,currentValue)=>accumulator+currentValue).toFixed(2)
+          totalPrice.reduce((accumulator,currentValue)=>accumulator+currentValue).toFixed(2)
           : '0'
         }</span>
         </div>
@@ -41,7 +39,9 @@ class CartDropdown extends React.Component {
 const mapStateToProps = ({cart: {cartItems}, currency: {currency}}) => ({
   cartItems,
   currency,
-  itemCount: cartItems.reduce((accQuantity, cartItem) => accQuantity + cartItem.quantity, 0)
+  itemCount: cartItems.reduce((accQuantity, cartItem) => accQuantity + cartItem.quantity, 0),
+  totalPrice: cartItems.map(item => item.quantity * item.prices.filter((item) => item.currency === currency)
+  .map((filteredItem) => filteredItem.amount)).flat()
 })
 
 export default connect(mapStateToProps)(CartDropdown);
