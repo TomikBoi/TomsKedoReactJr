@@ -1,31 +1,33 @@
 import React from "react";
 import CustomButton from "../custom-button/custom-button.component";
 import { connect } from "react-redux";
+import { addAttribute } from "../../redux/cart/cart.actions";
 import { getCurrencySymbol } from "../../helper/getCurrencySymbol";
 import "./cart-item.styles.scss";
 
+
 class CartItem extends React.Component {
+
   render() {
-    const { item, currency } = this.props;
-    const price = item.prices
+    const {cartItem, currency, addAttribute } = this.props;
+    const price = cartItem.prices
       .filter((item) => item.currency === currency)
       .map((filteredItem) => filteredItem.amount);
     return (
       <div className="cart-wrapper">
         <div className="nameprice">
-          <p>{item.name}</p>
+          <p>{cartItem.name}</p>
           <p>
             {getCurrencySymbol(currency)} {price}
           </p>
-          <form id={item.name} className="form">
+          <form id={cartItem.name} className="form">
             <div className="nameprice-btn">
-              {item.attributes.map((item) =>
+              {cartItem.attributes.map((item) =>
                 item.items.map((item) => (
                     <div key={item.id}>
-                      <input type="radio" name="attribute" id={item.id} />
-                      <label key={item.value} className="radio-label" htmlFor={item.id}>{item.value}</label>
+                      <input type="radio" name="attribute" id={item.id} value={item.value} checked={cartItem.selectedAttribute === item.value} onChange={(e) => (cartItem.selectedAttribute = e.target.value, addAttribute(cartItem))}/>
+                      <label className="radio-label" htmlFor={item.id}>{item.value}</label>
                     </div>
-
                 ))
               )}
             </div>
@@ -38,7 +40,7 @@ class CartItem extends React.Component {
           >
             <span className="quantity-btn">+</span>
           </CustomButton>
-          <p>{item.quantity}</p>
+          <p>{cartItem.quantity}</p>
           <CustomButton
             buttonStyle={"btn-item-action"}
             buttonSize={"btn-small"}
@@ -47,14 +49,21 @@ class CartItem extends React.Component {
           </CustomButton>
         </div>
         <div className="img">
-          <img src={item.gallery[0]} />
+          <img src={cartItem.gallery[0]} />
         </div>
       </div>
     );
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  addAttribute: (item) => dispatch(addAttribute(item))
+})
+
+
+
 const mapStateToProps = ({ currency: { currency } }) => ({
   currency,
 });
-export default connect(mapStateToProps)(CartItem);
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartItem);

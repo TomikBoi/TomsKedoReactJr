@@ -17,7 +17,7 @@ class CartDropdown extends React.Component {
         {
           itemCount === 0 ? <p>Please add a product</p> : 
           cartItems.map(cartItem => 
-            <CartItem key={cartItem.id} item={cartItem} />)
+            <CartItem key={cartItem.id} cartItem={cartItem} />)
         }
         </div>
         <div className='cart-dropdown-total'>
