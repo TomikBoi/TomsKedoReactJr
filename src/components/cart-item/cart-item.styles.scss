@@ -16,7 +16,7 @@
   &-attr {
     font-size: 14px;
     line-height: 160%;
-    color: #1D1F22;
+    color: #A6A6A6
   }
 
   p {
@@ -27,7 +27,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr;
-      gap: 0px 0px;
+      gap: 0px 6px;
       grid-auto-flow: row;
   }
 }
@@ -57,3 +57,30 @@
     width: 100%;
   }
 }
+
+.form input[type="radio"]{
+  display: none;
+}
+
+.form input[type="radio"]:checked + .radio-label{
+  background-color: white;
+  color: #1D1F22;
+}
+
+.radio-label {
+  font-size: 14px;
+  width: 16px;
+  height: 16px;
+  background-color: rgba(166, 166, 166, 0.2);
+  color: #A6A6A6;
+  border: 1px solid #1d1f22;
+  font-weight: 400;
+  font-family: Raleway;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

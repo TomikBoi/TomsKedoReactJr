@@ -6,7 +6,6 @@ import capitalizeFirstLetter from "../../helper/capitalizeFirstLetter";
 class CategoryPage extends React.Component {
   render() {
     const { categoryItems } = this.props;
-    console.log(categoryItems)
     return (
       <div className="category">
         <div className="category-container">

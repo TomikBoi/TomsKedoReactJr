@@ -37,7 +37,7 @@ export default class HomePageContainer extends React.Component {
 
     return (
       <>
-        <Query query={GET_ITEMS}>
+        <Query query={GET_ITEMS} fetchPolicy={"no-cache"}>
           {({ loading, error, data }) => {
             if (loading) return <Loading text={"Loading products"} />;
             return <HomePage categoryItems={data.categories} />;

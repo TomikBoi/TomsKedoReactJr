@@ -17,19 +17,19 @@ class CartItem extends React.Component {
           <p>
             {getCurrencySymbol(currency)} {price}
           </p>
-          <div className="nameprice-btn">
-            {item.attributes.map((item) =>
-              item.items.map((item) => (
-                <CustomButton
-                  buttonStyle={"btn-item-action"}
-                  buttonSize={"btn-small"}
-                  key={item.id}
-                >
-                  <span className="nameprice-attr">{item.value}</span>
-                </CustomButton>
-              ))
-            )}
-          </div>
+          <form id={item.name} className="form">
+            <div className="nameprice-btn">
+              {item.attributes.map((item) =>
+                item.items.map((item) => (
+                    <div key={item.id}>
+                      <input type="radio" name="attribute" id={item.id} />
+                      <label key={item.value} className="radio-label" htmlFor={item.id}>{item.value}</label>
+                    </div>
+
+                ))
+              )}
+            </div>
+          </form>
         </div>
         <div className="quantity">
           <CustomButton
