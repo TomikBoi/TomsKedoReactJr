@@ -16,14 +16,17 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 
 
 export const addItemAttribute = (cartItems, cartItemAddAttribute) => {
+  const newItem = cartItemAddAttribute[0]
+  const attribute = cartItemAddAttribute[1]
+
   const existingCartItem = cartItems.find(
-    cartItem => cartItem.id === cartItemAddAttribute.id
+    cartItem => cartItem.id === newItem.id
   )
 
   if(existingCartItem) {
     return cartItems.map(cartItem => 
-      cartItem.id === cartItemAddAttribute.id
-      ? {...cartItem}
+      cartItem.id === newItem.id
+      ? {...cartItem, selectedAttribute: {...cartItem.selectedAttribute, ...attribute}}
       : cartItem
     )
   }

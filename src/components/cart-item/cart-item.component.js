@@ -5,14 +5,19 @@ import { addAttribute } from "../../redux/cart/cart.actions";
 import { getCurrencySymbol } from "../../helper/getCurrencySymbol";
 import "./cart-item.styles.scss";
 
-
 class CartItem extends React.Component {
-
   render() {
-    const {cartItem, currency, addAttribute } = this.props;
+    const { cartItem, currency, addAttribute } = this.props;
     const price = cartItem.prices
       .filter((item) => item.currency === currency)
       .map((filteredItem) => filteredItem.amount);
+
+    const handleChange = (event) => {
+      const eventObj = document.getElementById(event.target.id);
+      const formId = eventObj.form.id;
+      return { [formId]: event.target.value };
+    };
+
     return (
       <div className="cart-wrapper">
         <div className="nameprice">
@@ -20,18 +25,29 @@ class CartItem extends React.Component {
           <p>
             {getCurrencySymbol(currency)} {price}
           </p>
-          <form id={cartItem.name} className="form">
-            <div className="nameprice-btn">
-              {cartItem.attributes.map((item) =>
-                item.items.map((item) => (
-                    <div key={item.id}>
-                      <input type="radio" name="attribute" id={item.id} value={item.value} checked={cartItem.selectedAttribute === item.value} onChange={(e) => (cartItem.selectedAttribute = e.target.value, addAttribute(cartItem))}/>
-                      <label className="radio-label" htmlFor={item.id}>{item.value}</label>
-                    </div>
-                ))
-              )}
-            </div>
-          </form>
+
+          {cartItem.attributes.map((item) => (
+            <form id={item.id} key={item.id} className="form">
+              <div className="nameprice-btn">
+                {item.items.map((item) => (
+                  <div key={item.id}>
+                    <input
+                      type="radio"
+                      id={item.id}
+                      value={item.value}
+                      checked={Object.values(cartItem.selectedAttribute).includes(item.value)}
+                      onChange={(e) =>
+                        addAttribute([cartItem, handleChange(e)])
+                      }
+                    />
+                    <label className="radio-label" htmlFor={item.id}>
+                      {item.value}
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </form>
+          ))}
         </div>
         <div className="quantity">
           <CustomButton
@@ -56,11 +72,9 @@ class CartItem extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  addAttribute: (item) => dispatch(addAttribute(item))
-})
-
-
+const mapDispatchToProps = (dispatch) => ({
+  addAttribute: (item) => dispatch(addAttribute(item)),
+});
 
 const mapStateToProps = ({ currency: { currency } }) => ({
   currency,
