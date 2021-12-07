@@ -14,10 +14,13 @@ class CartItem extends React.Component {
 
     const handleChange = (event) => {
       const eventObj = document.getElementById(event.target.id);
-      console.log(eventObj)
       const formId = eventObj.form.name;
       return { [formId]: event.target.value };
     };
+
+    const getFormId = (item) => {
+      console.log(item)
+    }
 
     return (
       <div className="cart-wrapper">
@@ -26,10 +29,8 @@ class CartItem extends React.Component {
           <p>
             {getCurrencySymbol(currency)} {price}
           </p>
-
           {cartItem.attributes.map((item) => (
-            
-            <form id={cartItem.id} name={item.id} key={cartItem.name + item.id} className="form">
+            <form name={item.id} key={item.id} className="form">
               <div className="nameprice-btn">
                 {item.items.map((item) => (
                   <div key={item.id}>
@@ -42,6 +43,7 @@ class CartItem extends React.Component {
                         addAttribute([cartItem, handleChange(e)])
                       }
                     />
+                    
                     <label className="radio-label" htmlFor={`${item.id}-${cartItem.id}`}>
                       {item.value}
                     </label>

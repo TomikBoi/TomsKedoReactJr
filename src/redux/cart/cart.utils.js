@@ -18,8 +18,7 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 };
 
 export const addItemAttribute = (cartItems, cartItemAddAttribute) => {
-  const newItem = cartItemAddAttribute[0];
-  const attribute = cartItemAddAttribute[1];
+  const [newItem, attribute] = cartItemAddAttribute
 
   return cartItems.map((cartItem) =>
     cartItem.id === newItem.id
