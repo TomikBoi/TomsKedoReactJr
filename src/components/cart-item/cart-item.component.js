@@ -12,16 +12,6 @@ class CartItem extends React.Component {
       .filter((item) => item.currency === currency)
       .map((filteredItem) => filteredItem.amount);
 
-    const handleChange = (event) => {
-      const eventObj = document.getElementById(event.target.id);
-      const formId = eventObj.form.name;
-      return { [formId]: event.target.value };
-    };
-
-    const getFormId = (item) => {
-      console.log(item)
-    }
-
     return (
       <div className="cart-wrapper">
         <div className="nameprice">
@@ -29,22 +19,28 @@ class CartItem extends React.Component {
           <p>
             {getCurrencySymbol(currency)} {price}
           </p>
-          {cartItem.attributes.map((item) => (
-            <form name={item.id} key={item.id} className="form">
+          {cartItem.attributes.map((product) => (
+            <form name={product.id} key={product.id} className="form">
               <div className="nameprice-btn">
-                {item.items.map((item) => (
+                {product.items.map((item) => (
                   <div key={item.id}>
                     <input
                       type="radio"
-                      id={`${item.id}-${cartItem.id}`}
+                      id={`${item.id}-${product.id}-${cartItem.id}`}
                       value={item.value}
-                      checked={Object.values(cartItem.selectedAttribute).includes(item.value)}
+                      checked={
+                        cartItem.selectedAttribute[`${product.id}`] ===
+                        item.value
+                      }
                       onChange={(e) =>
-                        addAttribute([cartItem, handleChange(e)])
+                        addAttribute([cartItem, { [product.id]: item.value }])
                       }
                     />
-                    
-                    <label className="radio-label" htmlFor={`${item.id}-${cartItem.id}`}>
+
+                    <label
+                      className="radio-label"
+                      htmlFor={`${item.id}-${product.id}-${cartItem.id}`}
+                    >
                       {item.value}
                     </label>
                   </div>
