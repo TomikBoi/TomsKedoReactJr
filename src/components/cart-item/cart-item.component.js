@@ -38,10 +38,11 @@ class CartItem extends React.Component {
                     />
 
                     <label
-                      className="radio-label"
+                      className={`radio-label radio-label-${product.type} `} 
+                      style={ product.type === "swatch" ? { backgroundColor: `${item.value}` } : null}
                       htmlFor={`${item.id}-${product.id}-${cartItem.id}`}
                     >
-                      {item.value}
+                      {product.type === "swatch" ? null : item.value}
                     </label>
                   </div>
                 ))}
