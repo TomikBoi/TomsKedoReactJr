@@ -3,12 +3,13 @@ import CustomButton from '../custom-button/custom-button.component'
 import CartItem from '../cart-item/cart-item.component'
 import {connect} from 'react-redux'
 import { getCurrencySymbol } from '../../helper/getCurrencySymbol'
+import { withRouter } from 'react-router'
 import './cart-dropdown.styles.scss'
 
 class CartDropdown extends React.Component {
 
   render() {
-    const {cartItems, currency, itemCount, totalPrice} = this.props
+    const {cartItems, currency, itemCount, totalPrice, history} = this.props
 
     return (
       <div className='cart-dropdown'>
@@ -28,7 +29,7 @@ class CartDropdown extends React.Component {
         }</span>
         </div>
           <div className='cart-dropdown-buttons'>
-            <CustomButton buttonStyle={'btn-cart-bag'} buttonSize={'btn-large'}>View bag</CustomButton>
+            <CustomButton buttonStyle={'btn-cart-bag'} buttonSize={'btn-large'} onClick={() => history.push('/cart')}>View bag</CustomButton>
             <CustomButton buttonStyle={'btn-cart-checkout'} buttonSize={'btn-large'}>Check out</CustomButton>
           </div>
         </div>
@@ -44,4 +45,4 @@ const mapStateToProps = ({cart: {cartItems}, currency: {currency}}) => ({
   .map((filteredItem) => filteredItem.amount)).flat()
 })
 
-export default connect(mapStateToProps)(CartDropdown);
+export default withRouter(connect(mapStateToProps)(CartDropdown));

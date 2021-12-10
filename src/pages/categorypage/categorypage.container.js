@@ -42,7 +42,7 @@ export default class CategoryPageContainer extends React.Component {
     return (
       <>
         <Query query={GET_ITEMS} fetchPolicy={"no-cache"} variables={{ category: categoryId }}>
-          {({ loading, error, data }) => {
+          {({ loading, data }) => {
             if (loading) return <Loading text={"Loading products"} />;
             if (!data.category)
               return (

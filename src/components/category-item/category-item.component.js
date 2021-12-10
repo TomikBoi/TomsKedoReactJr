@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {ReactComponent as BuyIcon} from "../../assets/buy-icon.svg"
 import {connect} from 'react-redux'
 import { addItem } from "../../redux/cart/cart.actions";
@@ -14,7 +15,9 @@ class CategoryItem extends React.Component {
       .map((filteredItem) => filteredItem.amount);
     return (
       <div className="card">
+      <Link to={`/product/${item.id}`}>
           <img src={gallery[0]} className="card-image" />
+      </Link>
         <div className="card-text">
           <p className="card-text-name">{name}</p>
           <span className="card-text-price">{`${getCurrencySymbol(currency)} ${price}`}</span>
