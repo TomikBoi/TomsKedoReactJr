@@ -3,21 +3,19 @@ import CustomButton from "../custom-button/custom-button.component";
 import { connect } from "react-redux";
 import { addAttribute } from "../../redux/cart/cart.actions";
 import { getCurrencySymbol } from "../../helper/getCurrencySymbol";
+import getPrice from "../../helper/getPrice";
 import "./cart-item.styles.scss";
 
 class CartItem extends React.Component {
   render() {
     const { cartItem, currency, addAttribute } = this.props;
-    const price = cartItem.prices
-      .filter((item) => item.currency === currency)
-      .map((filteredItem) => filteredItem.amount);
 
     return (
       <div className="cart-wrapper">
         <div className="nameprice">
           <p>{cartItem.name}</p>
           <p>
-            {getCurrencySymbol(currency)} {price}
+            {getCurrencySymbol(currency)} {getPrice(cartItem, currency)}
           </p>
           {cartItem.attributes.map((product) => (
             <form name={product.id} key={product.id} className="form">

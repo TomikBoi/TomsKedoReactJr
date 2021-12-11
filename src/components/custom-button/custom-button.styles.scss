@@ -8,6 +8,7 @@ $hover-green: #3ABF5C;
   cursor: pointer;
   text-transform: uppercase;
   padding: 0;
+  position: relative;
 }
 
 .btn-cart-bag {
@@ -44,7 +45,7 @@ $hover-green: #3ABF5C;
 }
 
 .btn-medium {
-  width: 63px;
+  width: 45px;
   height: 45px;
 }
 
