@@ -9,17 +9,17 @@ import "./category-item.styles.scss";
 class CategoryItem extends React.Component {
   render() {
     const {item, addItem, currency } = this.props;
-    const {name, gallery, prices} = item;
+    const {name, gallery, prices, brand} = item;
     const price = prices
       .filter((item) => item.currency === currency)
       .map((filteredItem) => filteredItem.amount);
     return (
       <div className="card">
       <Link to={`/product/${item.id}`}>
-          <img src={gallery[0]} className="card-image" />
+          <img src={gallery[0]} className="card-image" alt={name}/>
       </Link>
         <div className="card-text">
-          <p className="card-text-name">{name}</p>
+          <p className="card-text-name">{brand} {name}</p>
           <span className="card-text-price">{`${getCurrencySymbol(currency)} ${price}`}</span>
           <BuyIcon className='card-buy-icon' onClick={() => addItem(item)}/>
         </div>

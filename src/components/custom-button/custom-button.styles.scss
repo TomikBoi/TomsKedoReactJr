@@ -1,8 +1,7 @@
-:root {
-  --green: #5ece7b;
-  --white: #ffffff;
-  --black: #1d1f22;
-}
+$primary-green: #5ece7b;
+$primary-light: #ffffff;
+$primary-dark: #1d1f22;
+$hover-green: #3ABF5C;
 
 .btn {
   font-family: Raleway;
@@ -12,28 +11,31 @@
 }
 
 .btn-cart-bag {
-  background-color: var(--white);
-  color: var(--black);
+  background-color: $primary-light;
+  color: $primary-dark;
 }
 
 .btn-cart-checkout {
-  background-color: var(--green);
-  color: var(--white);
+  background-color: $primary-green;
+  color: $primary-light;
   border: none;
 }
 
 .btn-item-action {
-  background-color: var(--white);
-  color: var(--black);
-  border: 1px solid #1d1f22;
+  background-color: $primary-light;
+  color: $primary-dark;
+  border: 1px solid $primary-dark;
   font-weight: 400;
   line-height: 160%;
 }
 
 .btn-add-to-cart {
-  background-color: var(--green);
-  color: var(--white);
+  background-color: $primary-green;
+  color: $primary-light;
   border: none;
+  &:hover {
+    background-color: $hover-green;
+  }
 }
 
 .btn-small {

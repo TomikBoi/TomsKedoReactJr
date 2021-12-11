@@ -16,7 +16,7 @@
   &-attr {
     font-size: 14px;
     line-height: 160%;
-    color: #A6A6A6
+    color: #a6a6a6;
   }
 
   p {
@@ -59,28 +59,28 @@
   }
 }
 
-.form input[type="radio"]{
+.form input[type="radio"] {
   display: none;
 }
 
-.form input[type="radio"]:checked + .radio-label-text{
+.form input[type="radio"]:checked + .radio-label-text {
   background-color: white;
-  color: #1D1F22;
+  color: #1d1f22;
 }
 
-.form input[type="radio"]:checked + .radio-label-swatch{
+.form input[type="radio"]:checked + .radio-label-swatch {
   border-width: 1px;
   border-radius: 25%;
   outline: auto;
-  outline-color: #DC143C;
+  outline-color: #dc143c;
   transition: 0.3s;
 }
 
 .radio-label {
-  font-size: 0.5rem;;
+  font-size: 0.5rem;
   width: 16px;
   height: 16px;
-  color: #A6A6A6;
+  color: #a6a6a6;
   border: 1px solid #1d1f22;
   font-weight: 400;
   font-family: Raleway;
@@ -94,5 +94,5 @@
 
 .radio-label-text {
   background-color: rgba(166, 166, 166, 0.2);
-  color: #A6A6A6;
+  color: #a6a6a6;
 }

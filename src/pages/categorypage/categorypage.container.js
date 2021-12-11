@@ -36,9 +36,7 @@ export default class CategoryPageContainer extends React.Component {
     `;
 
     const { categoryId } = this.props.match.params;
-    if (!categoryId === "tech" || !categoryId === "clothes") {
-      categoryId = null;
-    }
+
     return (
       <>
         <Query query={GET_ITEMS} fetchPolicy={"no-cache"} variables={{ category: categoryId }}>

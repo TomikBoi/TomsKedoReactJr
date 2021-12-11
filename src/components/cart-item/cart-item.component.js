@@ -66,7 +66,7 @@ class CartItem extends React.Component {
           </CustomButton>
         </div>
         <div className="img">
-          <img src={cartItem.gallery[0]} />
+          <img src={cartItem.gallery[0]} alt={cartItem.name}/>
         </div>
       </div>
     );

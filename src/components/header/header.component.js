@@ -6,12 +6,11 @@ import CartIcon from "../cart-icon/cart-icon.component";
 import CurrencyIcon from "../currency-icon/currency-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import CurrencyDropdownContainer from '../currency-dropdown/currency-dropdown.container'
-import {getCurrencySymbol} from "../../helper/getCurrencySymbol";
 import "./header.styles.scss";
 
 class Header extends React.Component {
   render() {
-    const {hidden, hiddenCur, currency} = this.props
+    const {hidden, hiddenCur} = this.props
 
     return (
       <div className="header">
@@ -47,10 +46,9 @@ class Header extends React.Component {
   }
 }
 
-const mapStateToProps = ({cart: {hidden}, currency: {hiddenCur, currency}}) => ({
+const mapStateToProps = ({cart: {hidden}, currency: {hiddenCur}}) => ({
   hidden,
   hiddenCur,
-  currency
 })
 
 export default connect(mapStateToProps)(Header)

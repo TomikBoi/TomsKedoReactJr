@@ -23,7 +23,7 @@ class ProductPage extends React.Component {
 
     this.setState({
       
-     selecetedAttributes: {... this.state.selecetedAttributes,[name]: value }
+     selecetedAttributes: {...this.state.selecetedAttributes,[name]: value }
     });
   };
 
@@ -40,10 +40,10 @@ class ProductPage extends React.Component {
         <div className="product-gallery">
           <div className="product-gallery-small">
             {product.gallery.map((image) => (
-              <img key={image} className="product-gallery-small-image" src={image} onClick={() => this.setImage(image)}/>
+              <img key={image} className="product-gallery-small-image" src={image} onClick={() => this.setImage(image)} alt={product.name}/>
             ))}
           </div>
-          <div className="product-gallery-big"><img className='product-gallery-big-image' src={this.state.clickedImage} /></div>
+          <div className="product-gallery-big"><img className='product-gallery-big-image' src={this.state.clickedImage} alt={product.name}/></div>
         </div>
         <div className="product-info">
         <p className='product-info-name'>{product.brand}</p>
