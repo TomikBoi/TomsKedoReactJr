@@ -29,7 +29,6 @@ export const addItemAttribute = (cartItems, cartItemAddAttribute) => {
       cartItem.id === newItem.id
         ? {
             ...cartItem,
-            quantity: cartItem.quantity + 1,
             selectedAttribute: { ...cartItem.selectedAttribute, ...attribute },
           }
         : cartItem
