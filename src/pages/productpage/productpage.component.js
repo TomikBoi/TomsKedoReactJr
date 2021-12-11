@@ -2,7 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { addAttribute } from "../../redux/cart/cart.actions";
 import { getCurrencySymbol } from "../../helper/getCurrencySymbol";
+import CustomButton from "../../components/custom-button/custom-button.component";
 import "./productpage.styles.scss"
+
 
 class ProductPage extends React.Component {
   state = {
@@ -56,7 +58,7 @@ class ProductPage extends React.Component {
                   <input
                     type="radio"
                     name={attribute.id}
-                    id={`${item.id}-${attribute.id}-${product.id}`}
+                    id={`${item.id}-${attribute.id}`}
                     value={item.value}
                     checked={this.state.selecetedAttributes[`${attribute.id}`] === item.value}
                     onChange={(e) =>
@@ -67,7 +69,7 @@ class ProductPage extends React.Component {
                   <label
                     className={`attribute-radio-label attribute-radio-label-${attribute.type} `} 
                     style={ attribute.type === "swatch" ? { backgroundColor: `${item.value}` } : null}
-                    htmlFor={`${item.id}-${attribute.id}-${product.id}`}
+                    htmlFor={`${item.id}-${attribute.id}`}
                   >
                     {attribute.type === "swatch" ? null : item.value}
                   </label>
@@ -79,9 +81,9 @@ class ProductPage extends React.Component {
 
         <p className='product-price'>Price:</p> <span className="product-price-number">{getCurrencySymbol(currency)}{price}</span>
  
-        <button>add to cart</button>
+        <CustomButton buttonStyle={'btn-add-to-cart'} buttonSize={'btn-huge'} onClick={() => addAttribute([product, this.state.selecetedAttributes])}>Add to cart</CustomButton>
 
-        <p>Longer Description</p>
+        <p className='product-description' dangerouslySetInnerHTML={{__html: product.description}} />
         </div>
       </div>
     );
@@ -91,7 +93,6 @@ class ProductPage extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
   addAttribute: (item) => dispatch(addAttribute(item)),
 });
-
 
 
 const mapStateToProps = ({ currency: { currency } }) => ({
