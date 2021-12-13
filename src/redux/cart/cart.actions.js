@@ -9,7 +9,22 @@ export const addItem = item => ({
   payload: item
 })
 
-export const addAttribute = item => ({
-  type: CartActionType.ADD_ATTRIBUTE,
+export const selectAttribute = item => ({
+  type: CartActionType.SELECT_ATTRIBUTE,
+  payload: item
+})
+
+export const addItemQuantity = item => ({
+  type: CartActionType.ADD_ITEM_QUANTITY,
+  payload: item
+})
+
+export const clearItemFromCart = item => ({
+  type: CartActionType.CLEAR_ITEM_FROM_CART,
+  payload: item
+})
+
+export const removeItem = item => ({
+  type: CartActionType.REMOVE_ITEM,
   payload: item
 })

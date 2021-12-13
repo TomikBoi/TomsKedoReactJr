@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addAttribute } from "../../redux/cart/cart.actions";
+import { addItem } from "../../redux/cart/cart.actions";
 import { getCurrencySymbol } from "../../helper/getCurrencySymbol";
 import CustomButton from "../../components/custom-button/custom-button.component";
 import "./productpage.styles.scss";
@@ -26,7 +26,7 @@ class ProductPage extends React.Component {
   };
 
   render() {
-    const { product, addAttribute, currency } = this.props;
+    const { product, addItem, currency } = this.props;
 
     const price = product.prices
       .filter((item) => item.currency === currency)
@@ -109,7 +109,7 @@ class ProductPage extends React.Component {
               buttonStyle={"btn-add-to-cart"}
               buttonSize={"btn-huge"}
               onClick={() =>
-                addAttribute([product, this.state.selecetedAttributes])
+                addItem([product, this.state.selecetedAttributes])
               }
             >
               Add to cart
@@ -134,7 +134,7 @@ class ProductPage extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  addAttribute: (item) => dispatch(addAttribute(item)),
+  addItem: (item) => dispatch(addItem(item)),
 });
 
 const mapStateToProps = ({ currency: { currency } }) => ({
