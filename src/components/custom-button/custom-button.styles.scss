@@ -33,6 +33,11 @@ $hover-green: #3ABF5C;
   border: 1px solid $primary-dark;
   font-weight: 400;
   line-height: 160%;
+
+  &:hover {
+    background-color: invert($primary-light);
+    color: invert($primary-dark);
+  }
 }
 
 .btn-add-to-cart {
@@ -48,7 +53,7 @@ $hover-green: #3ABF5C;
   background-color: 	#101010;
   color: $primary-light;
   border: none;
-  cursor: default;
+  cursor: not-allowed;
 }
 
 .btn-small {
