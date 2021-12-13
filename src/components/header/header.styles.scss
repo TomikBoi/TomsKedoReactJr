@@ -13,10 +13,17 @@
 
     &-category {
       padding: 10px 15px;
-      font-weight: 600;
+      font-style: normal;
+      font-weight: 400;
       font-size: 16px;
-      line-height: 120%;
       text-transform: uppercase;
+
+      &:hover {
+        color: #5ECE7B;
+        text-decoration: underline;
+        text-underline-offset: 30px;
+        text-decoration-thickness: 2px;
+      }
     }
 
   }
@@ -26,7 +33,7 @@
     align-items: center;
     width: 15%;
     justify-content: space-evenly;
-
+    
   }
 }
 

@@ -5,11 +5,12 @@ import {connect} from 'react-redux'
 import { getCurrencySymbol } from '../../helper/getCurrencySymbol'
 import { withRouter } from 'react-router'
 import './cart-dropdown.styles.scss'
+import { toggleCartHidden } from '../../redux/cart/cart.actions'
 
 class CartDropdown extends React.Component {
 
   render() {
-    const {cartItems, currency, itemCount, totalPrice, history} = this.props
+    const {cartItems, currency, itemCount, totalPrice, history, dispatch} = this.props
 
     return (
       <div className='cart-dropdown'>
@@ -29,7 +30,7 @@ class CartDropdown extends React.Component {
         }</span>
         </div>
           <div className='cart-dropdown-buttons'>
-            <CustomButton buttonStyle={'btn-cart-bag'} buttonSize={'btn-large'} onClick={() => history.push('/cart')}>View bag</CustomButton>
+            <CustomButton buttonStyle={'btn-cart-bag'} buttonSize={'btn-large'} onClick={() => { history.push('/cart'); dispatch(toggleCartHidden()) }}>View bag</CustomButton>
             <CustomButton buttonStyle={'btn-cart-checkout'} buttonSize={'btn-large'}>Check out</CustomButton>
           </div>
         </div>

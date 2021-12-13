@@ -72,7 +72,7 @@ class CartItem extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  addAttribute: (item) => dispatch(addAttribute(item)),
+  addAttribute: (item) => dispatch(addAttribute(item))
 });
 
 const mapStateToProps = ({ currency: { currency } }) => ({

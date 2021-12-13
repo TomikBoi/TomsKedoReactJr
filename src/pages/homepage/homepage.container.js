@@ -15,6 +15,7 @@ export default class HomePageContainer extends React.Component {
           id
           gallery
           brand
+          inStock
           attributes {
             id
             name

@@ -14,7 +14,7 @@ class CurrencyDropdownContainer extends React.Component {
     return(
       <>
       <Query query={GET_CURRENCIES}>
-          {({ loading, error, data }) => {
+          {({ loading, data }) => {
             if (loading) return null;
             return <CurrencyDropdown currencies={data.currencies} />;
           }}

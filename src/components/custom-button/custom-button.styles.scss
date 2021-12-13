@@ -14,6 +14,11 @@ $hover-green: #3ABF5C;
 .btn-cart-bag {
   background-color: $primary-light;
   color: $primary-dark;
+
+  &:hover {
+    background-color: invert($primary-light);
+    color: invert($primary-dark);
+  }
 }
 
 .btn-cart-checkout {
@@ -37,6 +42,13 @@ $hover-green: #3ABF5C;
   &:hover {
     background-color: $hover-green;
   }
+}
+
+.btn-add-to-cart-disabled {
+  background-color: 	#101010;
+  color: $primary-light;
+  border: none;
+  cursor: default;
 }
 
 .btn-small {

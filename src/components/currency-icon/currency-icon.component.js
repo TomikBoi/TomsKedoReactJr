@@ -7,10 +7,10 @@ import './currency-icon.styles.scss'
 
 class CurrencyIcon extends React.Component {
   render() {
-    const {toggleCurrencyHidden, currency} = this.props 
+    const {toggleCurrencyHidden, currency, hiddenCur} = this.props 
     return (
       <div className="currency" onClick={toggleCurrencyHidden}>
-        <span className="currency-icon">{getCurrencySymbol(currency)}</span> <span><i className="currency-icon-dropdown"></i>
+        <span className="currency-icon">{getCurrencySymbol(currency)}</span> <span><i className={`currency-icon-dropdown currency-icon-dropdown-${hiddenCur}`}></i>
         </span>
       </div>
     );
@@ -21,8 +21,9 @@ const mapDispatchToProps = dispatch => ({
   toggleCurrencyHidden: () => dispatch(toggleCurrencyHidden())
 })
 
-const mapStateToProps = ({currency: {currency}}) => ({
-  currency
+const mapStateToProps = ({currency: {currency, hiddenCur}}) => ({
+  currency,
+  hiddenCur
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(CurrencyIcon);

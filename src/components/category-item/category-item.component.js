@@ -18,7 +18,10 @@ class CategoryItem extends React.Component {
         <div className="card-text">
           <p className="card-text-name">{item.brand} {item.name}</p>
           <span className="card-text-price">{`${getCurrencySymbol(currency)} ${getPrice(item, currency)}`}</span>
+          {item.inStock ? 
           <BuyIcon className='card-buy-icon' onClick={() => addItem(item)}/>
+          :
+          null}
         </div>
       </div>
     );

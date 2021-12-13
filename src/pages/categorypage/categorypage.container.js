@@ -16,6 +16,7 @@ export default class CategoryPageContainer extends React.Component {
             id
             gallery
             brand
+            inStock
             attributes {
               id
               name

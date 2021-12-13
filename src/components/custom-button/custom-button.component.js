@@ -7,7 +7,8 @@ const STYLES = [
   'btn-cart-bag',
   'btn-cart-checkout',
   'btn-item-action',
-  'btn-add-to-cart'
+  'btn-add-to-cart',
+  'btn-add-to-cart-disabled'
 ]
 
 const SIZES = [
@@ -17,14 +18,14 @@ const SIZES = [
 class CustomButton extends React.Component {
 
   render() {
-    const {children, type, onClick, buttonStyle, buttonSize} = this.props
+    const {children, type, onClick, buttonStyle, buttonSize, disabled = false} = this.props
 
     const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : ''
 
     const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : ''
 
     return(
-      <button className={`btn ${checkButtonStyle} ${checkButtonSize}`} onClick={onClick} type={type}>
+      <button className={`btn ${checkButtonStyle} ${checkButtonSize}`} onClick={onClick} type={type} disabled={disabled}>
         {children}
       </button>
     )

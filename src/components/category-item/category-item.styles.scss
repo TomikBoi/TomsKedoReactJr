@@ -1,6 +1,6 @@
 .card {
-  max-height: 255px;
-  width: 265px;
+  max-height: 300px;
+  max-width: 265px;
   padding: 16px;
   position: relative;
   cursor: pointer;
@@ -29,13 +29,14 @@
     width: 52px;
     height: 52px;
     position: absolute;
-    right: 32px;
-    bottom: -5px;
+    right: 17px;
+    bottom: 44px;
     display: none;
     cursor: pointer;
   }
 
   &:hover{
+    box-shadow:rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
     .card-buy-icon {
       display: block;
     }
