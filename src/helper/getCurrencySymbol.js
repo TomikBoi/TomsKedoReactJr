@@ -12,5 +12,4 @@ export const getCurrencySymbol = currency => {
   } else {
     return currencySymbol["USD"]
   }
-  
 }

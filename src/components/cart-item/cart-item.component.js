@@ -4,13 +4,14 @@ import { connect } from "react-redux";
 import { selectAttribute } from "../../redux/cart/cart.actions";
 import { addItemQuantity } from "../../redux/cart/cart.actions";
 import { removeItem } from "../../redux/cart/cart.actions";
+import { clearItemFromCart } from "../../redux/cart/cart.actions";
 import { getCurrencySymbol } from "../../helper/getCurrencySymbol";
 import getPrice from "../../helper/getPrice";
 import "./cart-item.styles.scss";
 
 class CartItem extends React.Component {
   render() {
-    const { cartItem, currency, selectAttribute, removeItem, addItemQuantity } =
+    const { cartItem, currency, selectAttribute, removeItem, addItemQuantity, clearItemFromCart } =
       this.props;
 
     return (
@@ -75,8 +76,9 @@ class CartItem extends React.Component {
             <span className="quantity-btn">-</span>
           </CustomButton>
         </div>
-        <div className="img">
-          <img src={cartItem.gallery[0]} alt={cartItem.name} />
+        <div className="img-container">
+          <img className='img' src={cartItem.gallery[0]} alt={cartItem.name} />
+          <button className='img-remove-item' onClick={() => clearItemFromCart(cartItem)}>X</button>
         </div>
       </div>
     );
@@ -87,6 +89,7 @@ const mapDispatchToProps = (dispatch) => ({
   selectAttribute: (item) => dispatch(selectAttribute(item)),
   addItemQuantity: (item) => dispatch(addItemQuantity(item)),
   removeItem: (item) => dispatch(removeItem(item)),
+  clearItemFromCart: (item) => dispatch(clearItemFromCart(item))
 });
 
 const mapStateToProps = ({ currency: { currency } }) => ({

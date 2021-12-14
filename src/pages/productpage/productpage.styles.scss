@@ -1,3 +1,4 @@
+@import "../../helper/variables";
 .product-container {
   margin-top: 60px;
   padding-left: 10px;
@@ -20,7 +21,7 @@
       cursor: pointer;
 
       &-selected {
-        border: 3px solid #5ECE7B;
+        border: 3px solid $primary-button-green;
       }
 
       &:hover {
@@ -51,20 +52,20 @@
     font-weight: 600;
     font-size: 30px;
     line-height: 27px;
-    color: #1d1f22;
+    color: $primary-text-color;
     margin-bottom: 8px;
   }
 
   &-brand {
     font-size: 30px;
     line-height: 27px;
-    color: #1d1f22;
+    color: $primary-text-color;
     margin: 0 0 20px 0;
   }
 }
 
 .attribute-name {
-  color: #1d1f22;
+  color: $primary-text-color;
   font-weight: bold;
   font-size: 18px;
   line-height: 18px;
@@ -77,15 +78,15 @@
 
 .attribute-form input[type="radio"]:checked + .attribute-radio-label-text {
   background-color: #1c1e21;
-  border: 1px solid #1d1f22;
-  color: #ffffff;
+  border: 1px solid $primary-text-color;
+  color: $white
 }
 
 .attribute-form input[type="radio"]:checked + .attribute-radio-label-swatch {
   border-width: 1px;
   border-radius: 25%;
   outline: auto;
-  outline-color: #dc143c;
+  outline-color: $secondary-selected-color;
   transition: 0.3s;
 }
 
@@ -93,8 +94,8 @@
   font-size: 16px;
   width: 63px;
   height: 45px;
-  color: #a6a6a6;
-  border: 1px solid #a6a6a6;
+  color: $secondary-gray;
+  border: 1px solid $secondary-gray;
   font-weight: 400;
   font-family: Raleway;
   text-transform: uppercase;
@@ -106,12 +107,12 @@
 }
 
 .attribute-radio-label-text {
-  background-color: #ffffff;
-  color: #292929;
+  background-color: $white;
+  color: $primary-text-color;
 
   &:hover {
-    background-color: #1c1e21;
-    color: #ffffff;
+    background-color: $primary-text-color;
+    color: $white;
   }
 }
 
@@ -128,14 +129,14 @@
   font-weight: bold;
   font-size: 18px;
   line-height: 18px;
-  color: #1d1f22;
+  color: $primary-text-color;
   margin-bottom: 5px;
 
   &-number {
     font-weight: bold;
     font-size: 24px;
     line-height: 18px;
-    color: #1d1f22;
+    color: $primary-text-color;
     margin-bottom: 30px;
   }
 }
@@ -143,5 +144,5 @@
 .product-description {
   font-size: 16px;
   line-height: 159.96%;
-  color: #1d1f22;
+  color: $primary-text-color;
 }

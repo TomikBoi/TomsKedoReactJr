@@ -1,3 +1,4 @@
+@import "../../helper/variables";
 .header {
   height: 80px;
   width: 100%;
@@ -19,7 +20,7 @@
       text-transform: uppercase;
 
       &:hover {
-        color: #5ECE7B;
+        color: $primary-button-green;
         text-decoration: underline;
         text-underline-offset: 30px;
         text-decoration-thickness: 2px;
@@ -38,7 +39,7 @@
 }
 
 .active {
-  color: #5ECE7B;
+  color: $primary-button-green;
   text-decoration: underline;
   text-underline-offset: 30px;
   text-decoration-thickness: 2px;

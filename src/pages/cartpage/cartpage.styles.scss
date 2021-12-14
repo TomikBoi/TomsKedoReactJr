@@ -1,3 +1,4 @@
+@import "../../helper/variables";
 .cartpage-wrapper {
   max-width: 1200px;
   margin: auto;
@@ -9,7 +10,7 @@
   font-size: 32px;
   line-height: 40px;
   text-transform: uppercase;
-  color: #1d1f22;
+  color: $primary-text-color;
   margin-bottom: 75px;
 }
 
@@ -21,7 +22,7 @@
   max-width: 1100px;
   margin-bottom: 41px;
   flex-basis: 0;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid $secondary-cartpage-border;
   padding: 20px 0;
 
   p {
@@ -39,7 +40,7 @@
       font-size: 30px;
       line-height: 27px;
       margin-bottom: 3px;
-      color: #1d1f22;
+      color: $primary-text-color;
       margin-bottom: 10px;
     }
 
@@ -47,7 +48,7 @@
       font-weight: 400;
       font-size: 30px;
       line-height: 27px;
-      color: #1d1f22;
+      color: $primary-text-color;
     }
 
     &-price {
@@ -56,13 +57,13 @@
       line-height: 18px;
       display: flex;
       align-items: center;
-      color: #1d1f22;
+      color: $primary-text-color
     }
 
     &-attr {
       font-size: 14px;
       line-height: 160%;
-      color: #a6a6a6;
+      color: $secondary-gray;
     }
   }
 }
@@ -92,17 +93,32 @@
   }
 }
 
-.cartpage-img {
+.cartpage-img-container {
   display: flex;
   max-width: 150px;
   max-height: 100%;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
 
-  img {
+  .cartpage-img {
     max-width: 100%;
     height: auto;
+  }
+
+  .cartpage-img-remove-item {
+    position: absolute;
+    z-index: 100;
+    right: 0px;
+    top: 3px;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
   }
 }
 
@@ -121,16 +137,16 @@
   }
 
   input[type="radio"]:checked + .cartpage-radio-label-text {
-    background-color: #1d1f22;
-    border: 1px solid #1d1f22;
-    color: #ffffff;
+    background-color: $primary-text-color;
+    border: 1px solid $primary-text-color;
+    color: $white;
   }
 
   input[type="radio"]:checked + .cartpage-radio-label-swatch {
     border-width: 1px;
     border-radius: 25%;
     outline: auto;
-    outline-color: #dc143c;
+    outline-color: $secondary-selected-color;
     transition: 0.3s;
   }
 }
@@ -139,8 +155,8 @@
   font-size: 16px;
   width: 55px;
   height: 37px;
-  color: #a6a6a6;
-  border: 1px solid #1d1f22;
+  color: $secondary-gray;
+  border: 1px solid $primary-text-color;
   font-weight: 400;
   font-family: Raleway;
   cursor: pointer;
@@ -152,21 +168,21 @@
 }
 
 .cartpage-radio-label-text {
-  background-color: #ffffff;
-  color: #1d1f22;
+  background-color: $white;
+  color: $primary-text-color;
 }
 
 .cartpage-total-wrapper {
   margin-top: 35px;
-    border-top: 5px solid;
-    padding-top: 20px;
-    text-align: right;
+  border-top: 5px solid;
+  padding-top: 20px;
+  text-align: right;
 }
 
 .cartpage-total-text {
   font-size: 26px;
-    margin: 0 0 5px 0;
-    font-weight: 600;
+  margin: 0 0 5px 0;
+  font-weight: 600;
 }
 
 .cartpage-total-amount {

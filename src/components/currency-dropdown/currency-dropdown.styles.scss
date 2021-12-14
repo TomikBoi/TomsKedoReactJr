@@ -1,27 +1,28 @@
+@import "../../helper/variables";
 .currency-dropown-wrapper {
   position: absolute;
   width: 114px;
   padding: 0px 40px 0px 20px;
   right: 85px;
   top: 50px;
-  
-  ul {
-    list-style: none;
-  }
+}
 
-  button {
+.currency-dropdown-list {
+  list-style: none;
+
+  &-item-button {
     background: none;
     border: none;
     font-weight: 500;
     font-size: 18px;
     margin-bottom: 10px;
     text-align: right;
-    color: #1d1f22;
-    font-family: 'Raleway';
+    color: $primary-text-color;
+    font-family: "Raleway";
     cursor: pointer;
 
     &:hover {
-      color: #5ECE7B;
+      color: $primary-button-green;
     }
   }
 }

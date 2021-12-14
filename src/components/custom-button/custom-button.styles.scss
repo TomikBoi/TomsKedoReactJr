@@ -1,7 +1,4 @@
-$primary-green: #5ece7b;
-$primary-light: #ffffff;
-$primary-dark: #1d1f22;
-$hover-green: #3ABF5C;
+@import "../../helper/variables";
 
 .btn {
   font-family: Raleway;
@@ -12,46 +9,46 @@ $hover-green: #3ABF5C;
 }
 
 .btn-cart-bag {
-  background-color: $primary-light;
-  color: $primary-dark;
+  background-color: $white;
+  color: $black;
 
   &:hover {
-    background-color: invert($primary-light);
-    color: invert($primary-dark);
+    background-color: invert($white);
+    color: invert($black);
   }
 }
 
 .btn-cart-checkout {
-  background-color: $primary-green;
-  color: $primary-light;
+  background-color: $primary-button-green;
+  color: $white;
   border: none;
 }
 
 .btn-item-action {
-  background-color: $primary-light;
-  color: $primary-dark;
-  border: 1px solid $primary-dark;
+  background-color: $white;
+  color: $black;
+  border: 1px solid $black;
   font-weight: 400;
   line-height: 160%;
 
   &:hover {
-    background-color: invert($primary-light);
-    color: invert($primary-dark);
+    background-color: invert($white);
+    color: invert($black);
   }
 }
 
 .btn-add-to-cart {
-  background-color: $primary-green;
-  color: $primary-light;
+  background-color: $primary-button-green;
+  color: $white;
   border: none;
   &:hover {
-    background-color: $hover-green;
+    background-color: $hover-button-green-hover;
   }
 }
 
 .btn-add-to-cart-disabled {
-  background-color: 	#101010;
-  color: $primary-light;
+  background-color: $secondary-button-disabled;
+  color: $white;
   border: none;
   cursor: not-allowed;
 }

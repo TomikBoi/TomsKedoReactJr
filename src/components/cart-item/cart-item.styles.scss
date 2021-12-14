@@ -1,3 +1,4 @@
+@import "../../helper/variables";
 .cart-wrapper {
   display: flex;
   flex-direction: row;
@@ -16,7 +17,7 @@
   &-attr {
     font-size: 14px;
     line-height: 160%;
-    color: #a6a6a6;
+    color: $secondary-gray;
   }
 
   p {
@@ -45,17 +46,32 @@
   }
 }
 
-.img {
+.img-container {
   display: flex;
   width: 105px;
   align-items: center;
   justify-content: center;
   flex: 1 1 0px;
+  position: relative;
+}
 
-  img {
-    height: auto;
-    width: 100%;
-  }
+.img {
+  height: auto;
+  width: 100%;
+}
+
+.img-remove-item {
+  position: absolute;
+  z-index: 100;
+  right: -4px;
+  top: -10px;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
 .form input[type="radio"] {
@@ -63,15 +79,15 @@
 }
 
 .form input[type="radio"]:checked + .radio-label-text {
-  background-color: white;
-  color: #1d1f22;
+  background-color: $white;
+  color: $primary-text-color
 }
 
 .form input[type="radio"]:checked + .radio-label-swatch {
   border-width: 1px;
   border-radius: 25%;
   outline: auto;
-  outline-color: #dc143c;
+  outline-color: $secondary-selected-color;
   transition: 0.3s;
 }
 
@@ -79,8 +95,8 @@
   font-size: 0.5rem;
   width: 16px;
   height: 16px;
-  color: #a6a6a6;
-  border: 1px solid #1d1f22;
+  color: $secondary-gray;
+  border: 1px solid $primary-text-color;
   font-weight: 400;
   font-family: Raleway;
   cursor: pointer;
@@ -92,6 +108,6 @@
 }
 
 .radio-label-text {
-  background-color: rgba(166, 166, 166, 0.2);
-  color: #a6a6a6;
+  background-color: $secondary-radio-background;
+  color: $secondary-gray;
 }

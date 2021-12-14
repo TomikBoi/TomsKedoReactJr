@@ -1,3 +1,4 @@
+@import "../../helper/variables";
 .cart-dropdown {
   position: absolute;
   width: 325px;
@@ -6,8 +7,8 @@
   display: flex;
   flex-direction: column;
   padding: 5px 15px 20px 15px;
-  border: 1px solid black;
-  background-color: white;
+  border: 1px solid $black;
+  background-color: $white;
   top: 61px;
   right: 75px;
   z-index: 5;
@@ -44,13 +45,13 @@
     &-left {
       font-weight: 500;
       font-size: 16px;
-      color: #1D1F22
+      color: $primary-text-color
     }
 
     &-right {
       font-weight: bold;
       font-size: 16px;
-      color: #1D1F22
+      color: $primary-text-color
     }
   }
 

@@ -1,3 +1,4 @@
+@import "../../helper/variables";
 .card {
   max-height: 300px;
   max-width: 265px;
@@ -5,11 +6,11 @@
   position: relative;
   cursor: pointer;
 
-    &-image {
-      width:  250px;
-      height: 250px;
-      background-size: cover;
-    }
+  &-image {
+    width: 250px;
+    height: 250px;
+    background-size: cover;
+  }
 
   &-text {
     font-weight: 300;
@@ -35,11 +36,11 @@
     cursor: pointer;
   }
 
-  &:hover{
-    box-shadow:rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
+  &:hover {
+    box-shadow: $secondary-card-shadow 0px 7px 29px 0px;
+
     .card-buy-icon {
       display: block;
     }
   }
-
 }

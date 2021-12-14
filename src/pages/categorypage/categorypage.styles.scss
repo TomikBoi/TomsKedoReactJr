@@ -1,3 +1,4 @@
+@import "../../helper/variables";
 .category-items {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -7,7 +8,7 @@
 }
 
 .category-text {
-  color: #1d1f22;
+  color: $primary-text-color;
   font-style: normal;
   font-weight: normal;
   font-size: 35px;
