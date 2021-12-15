@@ -7,12 +7,6 @@ const INITIAL_STATE = {
 
 const currencyReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case CurrencyActionType.TOGGLE_CURRENCY_HIDDEN:
-      return {
-        ...state,
-        hiddenCur: !state.hiddenCur,
-      };
-
     case CurrencyActionType.CHANGE_CURRENCY:
       return {
         ...state,

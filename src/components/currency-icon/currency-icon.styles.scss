@@ -1,12 +1,15 @@
 @import "../../helper/variables";
 .currency {
-  cursor: pointer;
+  cursor: default;
+  &-icon {
+    font-weight: 500;
+    font-size: 18px;
+    color: $primary-text-color;
+  }
+}
 
- &-icon {
-  font-weight: 500;
-  font-size: 18px;
-  color: $primary-text-color;
- }
+.hidden {
+  display: none;
 }
 
 .currency-icon-dropdown {
@@ -16,12 +19,10 @@
   padding: 3px;
   margin-left: 10px;
   position: relative;
+  cursor: pointer;
+  transform: rotate(225deg);
 
-  &-true {
+  &-arrow-down {
     transform: rotate(45deg);
-  }
-
-  &-false {
-    transform: rotate(225deg);
   }
 }

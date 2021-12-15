@@ -30,7 +30,7 @@ class CartDropdown extends React.Component {
         }</span>
         </div>
           <div className='cart-dropdown-buttons'>
-            <CustomButton buttonStyle={'btn-cart-bag'} buttonSize={'btn-large'} onClick={() => { history.push('/cart'); dispatch(toggleCartHidden()) }}>View bag</CustomButton>
+            <CustomButton buttonStyle={'btn-cart-bag'} buttonSize={'btn-large'} onClick={() =>  history.push('/cart') }>View bag</CustomButton>
             <CustomButton buttonStyle={'btn-cart-checkout'} buttonSize={'btn-large'}>Check out</CustomButton>
           </div>
         </div>
