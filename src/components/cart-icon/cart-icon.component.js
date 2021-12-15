@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {ReactComponent as ShoppingIcon} from '../../assets/cart.svg'
+import CartDropdown from '../cart-dropdown/cart-dropdown.component'
 import './cart-icon.styles.scss'
 
 class CartIcon extends React.Component {
@@ -8,10 +9,23 @@ class CartIcon extends React.Component {
   render() {
     const {itemCount} = this.props 
 
+    const handleClick = () => {
+      document.querySelector(".cart-icon-dropdown").classList.remove("hidden");
+    };
+
+    const handleBlur = e => {
+      if (!e.currentTarget.contains(e.relatedTarget)) {
+        document.querySelector(".cart-icon-dropdown").classList.add("hidden");
+      }
+    }
+
     return (
-      <div className='cart'>
-        <ShoppingIcon className='cart-icon'/>
+      <div className='cart' onBlur={(e) => handleBlur(e)} tabIndex={0}>
+        <ShoppingIcon className='cart-icon' onClick={() => handleClick()}/>
         <span className='cart-icon-count'>{itemCount}</span> 
+        <div className='cart-icon-dropdown hidden'>
+        <CartDropdown />
+        </div>
       </div>
     )
   }

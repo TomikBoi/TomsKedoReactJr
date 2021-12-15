@@ -5,12 +5,11 @@ import {connect} from 'react-redux'
 import { getCurrencySymbol } from '../../helper/getCurrencySymbol'
 import { withRouter } from 'react-router'
 import './cart-dropdown.styles.scss'
-import { toggleCartHidden } from '../../redux/cart/cart.actions'
 
 class CartDropdown extends React.Component {
 
   render() {
-    const {cartItems, currency, itemCount, totalPrice, history, dispatch} = this.props
+    const {cartItems, currency, itemCount, totalPrice, history} = this.props
 
     return (
       <div className='cart-dropdown'>

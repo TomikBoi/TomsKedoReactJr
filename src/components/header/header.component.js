@@ -3,8 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CurrencyIcon from "../currency-icon/currency-icon.component";
-import CartDropdown from "../cart-dropdown/cart-dropdown.component";
-import CurrencyDropdownContainer from "../currency-dropdown/currency-dropdown.container";
 import "./header.styles.scss";
 
 class Header extends React.Component {
@@ -33,8 +31,6 @@ class Header extends React.Component {
         <div className="header-currencytcart">
           <CurrencyIcon />
           <CartIcon />
-          
-
         </div>
        
       </div>
