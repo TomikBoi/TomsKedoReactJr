@@ -11,6 +11,8 @@ class CartDropdown extends React.Component {
   render() {
     const {cartItems, currency, itemCount, totalPrice, history} = this.props
 
+
+
     return (
       <div className='cart-dropdown'>
         <p className='cart-dropdown-text'><span>My Bag, </span>{itemCount} items</p>
@@ -29,7 +31,7 @@ class CartDropdown extends React.Component {
         }</span>
         </div>
           <div className='cart-dropdown-buttons'>
-            <CustomButton buttonStyle={'btn-cart-bag'} buttonSize={'btn-large'} onClick={() =>  history.push('/cart') }>View bag</CustomButton>
+            <CustomButton buttonStyle={'btn-cart-bag'} buttonSize={'btn-large'} onClick={() =>  history.push('/cart')}>View bag</CustomButton>
             <CustomButton buttonStyle={'btn-cart-checkout'} buttonSize={'btn-large'}>Check out</CustomButton>
           </div>
         </div>

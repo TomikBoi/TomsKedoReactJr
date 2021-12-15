@@ -1,11 +1,15 @@
 body {
-  margin: 0;
   font-family: Raleway;
-  padding: 0 50px 150px 50px;
 }
 
 a {
   text-decoration: none;
   color: black
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1rem;
 }
 

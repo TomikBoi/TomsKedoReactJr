@@ -6,33 +6,32 @@ import CurrencyIcon from "../currency-icon/currency-icon.component";
 import "./header.styles.scss";
 
 class Header extends React.Component {
-
-
   render() {
     return (
-      <div className="header">
-        <div className="header-categories">
-          <NavLink className="header-categories-category" exact to="/">
-            All
-          </NavLink>
-          <NavLink className="header-categories-category" to="/category/tech">
-            Tech
-          </NavLink>
-          <NavLink
-            className="header-categories-category"
-            to="/category/clothes"
-          >
-            Clothes
-          </NavLink>
+      <div className="container">
+        <div className="header">
+          <div className="header-categories">
+            <NavLink className="header-categories-category" exact to="/">
+              All
+            </NavLink>
+            <NavLink className="header-categories-category" to="/category/tech">
+              Tech
+            </NavLink>
+            <NavLink
+              className="header-categories-category"
+              to="/category/clothes"
+            >
+              Clothes
+            </NavLink>
+          </div>
+          <Link to="/" className="header-logo-container">
+            <Logo className="logo" />
+          </Link>
+          <div className="header-currencytcart">
+            <CurrencyIcon />
+            <CartIcon />
+          </div>
         </div>
-        <Link to="/" className="header-logo-container">
-          <Logo className="logo" />
-        </Link>
-        <div className="header-currencytcart">
-          <CurrencyIcon />
-          <CartIcon />
-        </div>
-       
       </div>
     );
   }

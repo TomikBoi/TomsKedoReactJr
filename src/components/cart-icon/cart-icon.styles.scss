@@ -1,4 +1,4 @@
-@import '../../helper/variables';
+@import "../../helper/variables";
 .cart-icon {
   cursor: pointer;
 
@@ -19,3 +19,21 @@
 .hidden {
   display: none;
 }
+
+.overlay {
+  z-index: 999;
+  background: rgba(57, 55, 72, 0.22);
+  min-height: calc(100vh - 80px);
+  position: relative;
+}
+
+.overlay::before {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+}
+

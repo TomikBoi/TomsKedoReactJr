@@ -10,12 +10,14 @@ class CartIcon extends React.Component {
     const {itemCount} = this.props 
 
     const handleClick = () => {
-      document.querySelector(".cart-icon-dropdown").classList.remove("hidden");
+      document.querySelector(".cart-icon-dropdown").classList.toggle("hidden");
+      document.querySelector('.homepage-overlay').classList.toggle('overlay')
     };
 
     const handleBlur = e => {
       if (!e.currentTarget.contains(e.relatedTarget)) {
         document.querySelector(".cart-icon-dropdown").classList.add("hidden");
+        document.querySelector('.homepage-overlay').classList.remove('overlay')
       }
     }
 
