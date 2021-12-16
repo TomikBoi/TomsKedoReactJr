@@ -4,15 +4,22 @@
   flex-direction: row;
   justify-content: space-between;
   min-height: 150px;
-  margin-bottom: 41px;
-  flex-basis: 0;
+  margin-bottom: 20px;
 }
 
 .nameprice {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex: 1 1 0px;
+  flex: 1 1;
+
+  &-name {
+    margin-bottom: 3px;
+  }
+
+  &-item-price {
+    margin-bottom: 3px;
+  }
 
   &-attr {
     font-size: 14px;
@@ -20,9 +27,6 @@
     color: $secondary-gray;
   }
 
-  p {
-    margin: 0;
-  }
 
   &-btn {
     display: flex;
@@ -64,7 +68,7 @@
   position: absolute;
   z-index: 100;
   right: -4px;
-  top: -10px;
+  top: 0;
   background: none;
   color: inherit;
   border: none;
@@ -89,6 +93,12 @@
   outline: auto;
   outline-color: $secondary-selected-color;
   transition: 0.3s;
+}
+
+.form-attribute-name {
+  font-size: 12px;
+  font-weight: bold;
+  margin: 5px 0 5px 0;
 }
 
 .radio-label {

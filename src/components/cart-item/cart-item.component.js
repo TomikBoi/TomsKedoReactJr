@@ -11,53 +11,62 @@ import "./cart-item.styles.scss";
 
 class CartItem extends React.Component {
   render() {
-    const { cartItem, currency, selectAttribute, removeItem, addItemQuantity, clearItemFromCart } =
-      this.props;
+    const {
+      cartItem,
+      currency,
+      selectAttribute,
+      removeItem,
+      addItemQuantity,
+      clearItemFromCart,
+    } = this.props;
 
     return (
       <div className="cart-wrapper">
         <div className="nameprice">
-          <p>{cartItem.name}</p>
-          <p>
+          <span className="nameprice-name">{cartItem.name}</span>
+          <span className="nameprice-item-price">
             {getCurrencySymbol(currency)} {getPrice(cartItem, currency)}
-          </p>
-          {cartItem.attributes.map((product) => (
-            <form name={product.id} key={product.id} className="form">
-              <div className="nameprice-btn">
-                {product.items.map((item) => (
-                  <div key={item.id}>
-                    <input
-                      type="radio"
-                      id={`${item.id}-${product.id}-${cartItem.id}`}
-                      value={item.value}
-                      checked={
-                        cartItem.selectedAttribute[`${product.id}`] ===
-                        item.value
-                      }
-                      onChange={(e) =>
-                        selectAttribute([
-                          cartItem,
-                          { [product.id]: item.value },
-                        ])
-                      }
-                    />
+          </span>
+          <form className="form">
+            {cartItem.attributes.map((product) => (
+              <div key={product.id} className="form-wrapper">
+                <p className="form-attribute-name">{product.id}:</p>
+                <div className="nameprice-btn">
+                  {product.items.map((item) => (
+                    <div key={item.id}>
+                      <input
+                        type="radio"
+                        id={`${item.id}-${product.id}-${cartItem.id}`}
+                        value={item.value}
+                        checked={
+                          cartItem.selectedAttribute[`${product.id}`] ===
+                          item.value
+                        }
+                        onChange={(e) =>
+                          selectAttribute([
+                            cartItem,
+                            { [product.id]: item.value },
+                          ])
+                        }
+                      />
 
-                    <label
-                      className={`radio-label radio-label-${product.type} `}
-                      style={
-                        product.type === "swatch"
-                          ? { backgroundColor: `${item.value}` }
-                          : null
-                      }
-                      htmlFor={`${item.id}-${product.id}-${cartItem.id}`}
-                    >
-                      {product.type === "swatch" ? null : item.value}
-                    </label>
-                  </div>
-                ))}
+                      <label
+                        className={`radio-label radio-label-${product.type} `}
+                        style={
+                          product.type === "swatch"
+                            ? { backgroundColor: `${item.value}` }
+                            : null
+                        }
+                        htmlFor={`${item.id}-${product.id}-${cartItem.id}`}
+                      >
+                        {product.type === "swatch" ? null : item.value}
+                      </label>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </form>
-          ))}
+            ))}
+          </form>
         </div>
         <div className="quantity">
           <CustomButton
@@ -77,8 +86,13 @@ class CartItem extends React.Component {
           </CustomButton>
         </div>
         <div className="img-container">
-          <img className='img' src={cartItem.gallery[0]} alt={cartItem.name} />
-          <button className='img-remove-item' onClick={() => clearItemFromCart(cartItem)}>X</button>
+          <img className="img" src={cartItem.gallery[0]} alt={cartItem.name} />
+          <button
+            className="img-remove-item"
+            onClick={() => clearItemFromCart(cartItem)}
+          >
+            X
+          </button>
         </div>
       </div>
     );
@@ -89,7 +103,7 @@ const mapDispatchToProps = (dispatch) => ({
   selectAttribute: (item) => dispatch(selectAttribute(item)),
   addItemQuantity: (item) => dispatch(addItemQuantity(item)),
   removeItem: (item) => dispatch(removeItem(item)),
-  clearItemFromCart: (item) => dispatch(clearItemFromCart(item))
+  clearItemFromCart: (item) => dispatch(clearItemFromCart(item)),
 });
 
 const mapStateToProps = ({ currency: { currency } }) => ({

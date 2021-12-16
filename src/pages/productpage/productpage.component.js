@@ -9,7 +9,6 @@ class ProductPage extends React.Component {
   state = {
     clickedImage: this.props.product.gallery[0],
     selecetedAttributes: "",
-    fields: {},
     fieldErrors: {},
   };
 
@@ -28,7 +27,6 @@ class ProductPage extends React.Component {
   };
 
   handleChange = (evt) => {
-    console.log("change :: ", evt.target.name);
     const fieldErrors = {
       ...this.state.fieldErrors,
       [evt.target.name]: "",
@@ -143,7 +141,7 @@ class ProductPage extends React.Component {
                   {price}
                 </p>
                 {product.inStock ? (
-                  <button className="btn-add-to-cart btn-huge" type="submit">Add to cart</button>
+                  <button className="btn btn-add-to-cart btn-huge" type="submit">Add to cart</button>
                 ) : (
                   <CustomButton
                     buttonStyle={"btn-add-to-cart-disabled"}
