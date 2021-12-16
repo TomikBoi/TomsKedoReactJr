@@ -22,7 +22,7 @@
 
 .overlay {
   z-index: 999;
-  background: rgba(57, 55, 72, 0.22);
+  background: $overlay-color;
   min-height: calc(100vh - 80px);
   position: relative;
 }
@@ -35,5 +35,6 @@
   left:0;
   bottom:0;
   right:0;
+  background: $overlay-color;
 }
 
