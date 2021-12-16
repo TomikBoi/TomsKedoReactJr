@@ -1,15 +1,47 @@
 @import "../../helper/variables";
 .card {
-  max-height: 300px;
-  max-width: 265px;
-  padding: 16px;
+  padding: 20px;
   position: relative;
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 250ms ease;
 
+  &--OutOfStock {
+    opacity: 0.7;
+
+  .card-image {
+      filter: brightness(0.9);
+    }
+
+    .card-image-wrapper::after {
+      content: "Out of Stock";
+      position: absolute;
+      font-size: 1.5rem;
+      text-transform: capitalize;
+      padding: 0.08rem 0.5rem;
+      background-color: rgba(256, 256,256, 0.7);
+    }
+  }
+
+  &-presentation {
+    margin-bottom: 1.2rem;
+    position: relative;
+    flex-grow: 1;
+  }
+
+  &-image-wrapper {
+    max-height: 340px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
   &-image {
-    width: 250px;
-    height: 250px;
-    background-size: cover;
+    height: auto;
+    max-width: 100%;
+    width: 100%;
+    aspect-ratio: 1/1 auto;
   }
 
   &-text {
@@ -27,13 +59,20 @@
     }
   }
   &-buy-icon {
+    position: absolute;
+    display: none;
+    right: 20px;
+    bottom: -26px;
     width: 52px;
     height: 52px;
-    position: absolute;
-    right: 17px;
-    bottom: 44px;
-    display: none;
-    cursor: pointer;
+    display: flex;
+    color: white;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+    border-radius: 50%;
+    transition: opacity 250ms ease;
   }
 
   &:hover {
