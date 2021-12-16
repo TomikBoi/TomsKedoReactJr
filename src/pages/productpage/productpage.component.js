@@ -8,7 +8,9 @@ import "./productpage.styles.scss";
 class ProductPage extends React.Component {
   state = {
     clickedImage: this.props.product.gallery[0],
-    selecetedAttributes: {},
+    selecetedAttributes: "",
+    fields: {},
+    fieldErrors: {},
   };
 
   setImage = (img) => {
@@ -17,16 +19,41 @@ class ProductPage extends React.Component {
     });
   };
 
-  handleChange = (e) => {
-    const { name, value } = e.target;
+  handleAttrChange = (evt) => {
+    const { name, value } = evt.target;
 
     this.setState({
       selecetedAttributes: { ...this.state.selecetedAttributes, [name]: value },
     });
   };
 
+  handleChange = (evt) => {
+    console.log("change :: ", evt.target.name);
+    const fieldErrors = {
+      ...this.state.fieldErrors,
+      [evt.target.name]: "",
+    };
+
+    this.setState({ fieldErrors });
+  };
+
+  handleInvalid = (evt) => {
+    evt.preventDefault();
+    const fieldErrors = {
+      ...this.state.fieldErrors,
+      [evt.target.name]: evt.target.validationMessage,
+    };
+
+    this.setState({ fieldErrors });
+  };
+
   render() {
     const { product, addItem, currency } = this.props;
+
+    const handleSubmit = (evt) => {
+      evt.preventDefault();
+      addItem([product, this.state.selecetedAttributes]);
+    };
 
     const price = product.prices
       .filter((item) => item.currency === currency)
@@ -63,69 +90,70 @@ class ProductPage extends React.Component {
             <div className="product-info">
               <p className="product-info-name">{product.brand}</p>
               <p className="product-info-brand">{product.name}</p>
-              {product.attributes.map((attribute) => (
-                <form
-                  name={attribute.id}
-                  key={attribute.id}
-                  className="attribute-form"
-                >
-                  <p className="attribute-name">{attribute.id}:</p>
-                  <div className="attribute-btn">
-                    {attribute.items.map((item) => (
-                      <div key={item.id}>
-                        <input
-                          type="radio"
-                          name={attribute.id}
-                          id={`${item.id}-${attribute.id}`}
-                          value={item.value}
-                          checked={
-                            this.state.selecetedAttributes[
-                              `${attribute.id}`
-                            ] === item.value
-                          }
-                          onChange={(e) => this.handleChange(e)}
-                        />
-
-                        <label
-                          className={`attribute-radio-label attribute-radio-label-${attribute.type}`}
-                          style={
-                            attribute.type === "swatch"
-                              ? { backgroundColor: `${item.value}` }
-                              : null
-                          }
-                          htmlFor={`${item.id}-${attribute.id}`}
-                        >
-                          {attribute.type === "swatch" ? null : item.value}
-                        </label>
-                      </div>
-                    ))}
+              <form
+                onSubmit={(e) => handleSubmit(e)}
+                onChange={this.handleChange}
+                onInvalid={this.handleInvalid}
+                className="attribute-form"
+              >
+                {product.attributes.map((attribute) => (
+                  <div key={attribute.id}>
+                    <p className="attribute-name">{attribute.id}:</p>
+                    <div className="attribute-btn">
+                      {attribute.items.map((item) => (
+                        <div key={item.id}>
+                          <input
+                            required
+                            type="radio"
+                            name={attribute.name}
+                            id={`${item.id}-${attribute.id}`}
+                            value={item.value}
+                            checked={
+                              this.state.selecetedAttributes[
+                                `${attribute.id}`
+                              ] === item.value
+                            }
+                            onChange={(e) => this.handleAttrChange(e)}
+                          />
+                          <label
+                            className={`attribute-radio-label attribute-radio-label-${
+                              attribute.type
+                            } ${
+                              this.state.fieldErrors[`${attribute.name}`]
+                                ? "error"
+                                : ""
+                            }`}
+                            style={
+                              attribute.type === "swatch"
+                                ? { backgroundColor: `${item.value}` }
+                                : null
+                            }
+                            htmlFor={`${item.id}-${attribute.id}`}
+                          >
+                            {attribute.type === "swatch" ? null : item.value}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </form>
-              ))}
-              <p className="product-price">Price:</p>{" "}
-              <span className="product-price-number">
-                {getCurrencySymbol(currency)}
-                {price}
-              </span>
-              {product.inStock ? (
-                <CustomButton
-                  buttonStyle={"btn-add-to-cart"}
-                  buttonSize={"btn-huge"}
-                  onClick={() =>
-                    addItem([product, this.state.selecetedAttributes])
-                  }
-                >
-                  Add to cart
-                </CustomButton>
-              ) : (
-                <CustomButton
-                  buttonStyle={"btn-add-to-cart-disabled"}
-                  buttonSize={"btn-huge"}
-                  disabled={true}
-                >
-                  Out of Stock
-                </CustomButton>
-              )}
+                ))}
+                <p className="product-price">Price:</p>{" "}
+                <p className="product-price-number">
+                  {getCurrencySymbol(currency)}
+                  {price}
+                </p>
+                {product.inStock ? (
+                  <button className="btn-add-to-cart btn-huge" type="submit">Add to cart</button>
+                ) : (
+                  <CustomButton
+                    buttonStyle={"btn-add-to-cart-disabled"}
+                    buttonSize={"btn-huge"}
+                    disabled={true}
+                  >
+                    Out of Stock
+                  </CustomButton>
+                )}
+              </form>
               <p
                 className="product-description"
                 dangerouslySetInnerHTML={{ __html: product.description }}
