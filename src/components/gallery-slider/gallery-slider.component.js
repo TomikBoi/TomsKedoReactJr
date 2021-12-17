@@ -9,7 +9,6 @@ class GallerySlider extends React.Component {
 
   render() {
     const { images, classes } = this.props;
-    console.log(images.length)
     const nextImage = () => {
       this.setState((prevState) => {
         return { index: prevState.index + 1 };

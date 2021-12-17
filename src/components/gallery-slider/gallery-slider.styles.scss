@@ -1,3 +1,4 @@
+@import "../../helper/variables";
 .gallery-slider-image {
   &-btn {
     cursor: pointer;
@@ -5,7 +6,7 @@
     width: 20px;
     position: absolute;
     background: none;
-    color: black;
+    color: $black;
     margin: auto;
     top: 0;
     bottom: 0;
@@ -23,6 +24,6 @@
 }
 
 .prev:hover, .next:hover {
-  transition: cubic-bezier(.42,0,1,1);
-  background-color: rgba(255, 255, 255, 0.8);
+  transition: 0.3s;
+  background-color: $gallery-slider-background;
 }
