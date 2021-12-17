@@ -1,0 +1,28 @@
+.gallery-slider-image {
+  &-btn {
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    background: none;
+    color: black;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    border: none;
+    font-size: 12px;
+  }
+}
+
+.next {
+  right: 5px;
+}
+
+.prev {
+  left: 5px;
+}
+
+.prev:hover, .next:hover {
+  transition: cubic-bezier(.42,0,1,1);
+  background-color: rgba(255, 255, 255, 0.8);
+}

@@ -6,6 +6,7 @@ import { addItemQuantity } from "../../redux/cart/cart.actions";
 import { removeItem } from "../../redux/cart/cart.actions";
 import { clearItemFromCart } from "../../redux/cart/cart.actions";
 import { getCurrencySymbol } from "../../helper/getCurrencySymbol";
+import GallerySlider from "../../components/gallery-slider/gallery-slider.component";
 import getPrice from "../../helper/getPrice";
 import "./cart-item.styles.scss";
 
@@ -86,7 +87,7 @@ class CartItem extends React.Component {
           </CustomButton>
         </div>
         <div className="img-container">
-          <img className="img" src={cartItem.gallery[0]} alt={cartItem.name} />
+          <GallerySlider images={cartItem.gallery} classes={"img"} />
           <button
             className="img-remove-item"
             onClick={() => clearItemFromCart(cartItem)}

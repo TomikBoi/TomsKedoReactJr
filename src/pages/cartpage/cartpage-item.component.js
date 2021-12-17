@@ -7,6 +7,7 @@ import { removeItem } from "../../redux/cart/cart.actions";
 import { clearItemFromCart } from "../../redux/cart/cart.actions";
 import { getCurrencySymbol } from "../../helper/getCurrencySymbol";
 import getPrice from "../../helper/getPrice";
+import GallerySlider from "../../components/gallery-slider/gallery-slider.component";
 import "./cartpage.styles.scss";
 
 class CartPageItem extends React.Component {
@@ -81,7 +82,7 @@ class CartPageItem extends React.Component {
             >
               <span className="cartpage-quantity-btn">+</span>
             </CustomButton>
-            <p className='cartpage-quantity-amount'>{cartItem.quantity}</p>
+            <p className="cartpage-quantity-amount">{cartItem.quantity}</p>
             <CustomButton
               buttonStyle={"btn-item-action"}
               buttonSize={"btn-medium"}
@@ -91,11 +92,7 @@ class CartPageItem extends React.Component {
             </CustomButton>
           </div>
           <div className="cartpage-img-container">
-            <img
-              className="cartpage-img"
-              src={cartItem.gallery[0]}
-              alt={cartItem.name}
-            />
+            <GallerySlider images={cartItem.gallery} classes={"cartpage-img"} />
             <button
               className="cartpage-img-remove-item"
               onClick={() => clearItemFromCart(cartItem)}

@@ -1,0 +1,53 @@
+import React from "react";
+
+import "./gallery-slider.styles.scss";
+
+class GallerySlider extends React.Component {
+  state = {
+    index: 0,
+  };
+
+  render() {
+    const { images, classes } = this.props;
+    console.log(images.length)
+    const nextImage = () => {
+      this.setState((prevState) => {
+        return { index: prevState.index + 1 };
+      });
+    };
+
+    const prevImage = () => {
+      this.setState((prevState) => {
+        return { index: prevState.index - 1 };
+      });
+    };
+
+    return (
+      <>
+        <img className={classes} src={images[this.state.index]} />
+        {this.state.index !== 0 ? (
+          <button
+            className="gallery-slider-image-btn prev"
+            onClick={() => prevImage()}
+          >
+            &#10094;
+          </button>
+        ) : (
+          ""
+        )}
+        {this.state.index !== images.length - 1 ? (
+          <button
+            className="gallery-slider-image-btn next"
+            onClick={() => nextImage()}
+          >
+            &#10095;
+          </button>
+        ) : (
+          ""
+        )}
+      </>
+    );
+  }
+}
+
+export default GallerySlider;

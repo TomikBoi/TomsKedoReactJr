@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getCurrencySymbol } from "../../helper/getCurrencySymbol";
-
 import CartPageItem from "./cartpage-item.component";
 import "./cartpage.styles.scss";
 
