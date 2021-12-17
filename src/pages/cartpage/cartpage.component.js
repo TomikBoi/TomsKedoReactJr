@@ -7,10 +7,10 @@ import "./cartpage.styles.scss";
 
 class CartPage extends React.Component {
   render() {
-    const { cartItems, currency, totalPrice } = this.props;
+    const { cartItems, currency, totalPrice, hiddenCart } = this.props;
 
     return (
-      <div className="homepage-overlay">
+      <div className={`cart-overlay ${!hiddenCart ? 'overlay' : '' }`}>
         <div className="cartpage-wrapper">
           <h2 className="cartpage-headline">Cart</h2>
           {cartItems.length === 0 ? (
@@ -39,7 +39,7 @@ class CartPage extends React.Component {
   }
 }
 
-const mapStateToProps = ({ cart: { cartItems }, currency: { currency } }) => ({
+const mapStateToProps = ({ cart: { cartItems, hiddenCart }, currency: { currency } }) => ({
   cartItems,
   currency,
   totalPrice: cartItems
@@ -51,6 +51,7 @@ const mapStateToProps = ({ cart: { cartItems }, currency: { currency } }) => ({
           .map((filteredItem) => filteredItem.amount)
     )
     .flat(),
+    hiddenCart
 });
 
 export default connect(mapStateToProps)(CartPage);

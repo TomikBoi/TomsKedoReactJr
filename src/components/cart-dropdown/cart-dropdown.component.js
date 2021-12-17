@@ -2,6 +2,7 @@ import React from 'react'
 import CustomButton from '../custom-button/custom-button.component'
 import CartItem from '../cart-item/cart-item.component'
 import {connect} from 'react-redux'
+import { closeCart } from '../../redux/cart/cart.actions'
 import { getCurrencySymbol } from '../../helper/getCurrencySymbol'
 import { withRouter } from 'react-router'
 import './cart-dropdown.styles.scss'
@@ -9,8 +10,12 @@ import './cart-dropdown.styles.scss'
 class CartDropdown extends React.Component {
 
   render() {
-    const {cartItems, currency, itemCount, totalPrice, history} = this.props
+    const {cartItems, currency, itemCount, totalPrice, history, dispatch} = this.props
 
+    const hideOverlayCart = () => {
+      history.push('/cart')
+      dispatch(closeCart())
+    };
 
 
     return (
@@ -31,7 +36,7 @@ class CartDropdown extends React.Component {
         }</span>
         </div>
           <div className='cart-dropdown-buttons'>
-            <CustomButton buttonStyle={'btn-cart-bag'} buttonSize={'btn-large'} onClick={() =>  history.push('/cart')}>View bag</CustomButton>
+            <CustomButton buttonStyle={'btn-cart-bag'} buttonSize={'btn-large'} onClick={() => hideOverlayCart()}>View bag</CustomButton>
             <CustomButton buttonStyle={'btn-cart-checkout'} buttonSize={'btn-large'}>Check out</CustomButton>
           </div>
         </div>

@@ -24,3 +24,11 @@ export const removeItem = item => ({
   type: CartActionType.REMOVE_ITEM,
   payload: item
 })
+
+export const toggleCart = () => ({
+  type: CartActionType.TOGGLE_CART,
+})
+
+export const closeCart = () => ({
+  type: CartActionType.CLOSE_CART
+})

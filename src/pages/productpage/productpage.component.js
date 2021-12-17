@@ -46,7 +46,7 @@ class ProductPage extends React.Component {
   };
 
   render() {
-    const { product, addItem, currency } = this.props;
+    const { product, addItem, currency, hiddenCart } = this.props;
 
     const handleSubmit = (evt) => {
       evt.preventDefault();
@@ -58,7 +58,7 @@ class ProductPage extends React.Component {
       .map((filteredItem) => filteredItem.amount);
 
     return (
-      <div className="homepage-overlay">
+      <div className={`cart-overlay ${!hiddenCart ? 'overlay' : '' }`}>
         <div className="container">
           <div className="product-container">
             <div className="product-gallery">
@@ -141,7 +141,7 @@ class ProductPage extends React.Component {
                   {price}
                 </p>
                 {product.inStock ? (
-                  <button className="btn btn-add-to-cart btn-huge" type="submit">Add to cart</button>
+                  <CustomButton buttonStyle={'btn-add-to-cart'} buttonSize={'btn-huge'} type={'submit'}>Add to cart</CustomButton>
                 ) : (
                   <CustomButton
                     buttonStyle={"btn-add-to-cart-disabled"}
@@ -168,8 +168,9 @@ const mapDispatchToProps = (dispatch) => ({
   addItem: (item) => dispatch(addItem(item)),
 });
 
-const mapStateToProps = ({ currency: { currency } }) => ({
+const mapStateToProps = ({currency: {currency}, cart: {hiddenCart}}) => ({
   currency,
+  hiddenCart
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

@@ -1,13 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
 import "./categorypage.styles.scss";
 import CategoryItem from "../../components/category-item/category-item.component";
 import capitalizeFirstLetter from "../../helper/capitalizeFirstLetter";
 
 class CategoryPage extends React.Component {
   render() {
-    const { categoryItems } = this.props;
+    const { categoryItems, hiddenCart } = this.props;
     return (
-      <div className="homepage-overlay">
+      <div className={`cart-overlay ${!hiddenCart ? 'overlay' : '' }`}>
         <div className="container">
           <div className="category">
             <div className="category-container">
@@ -27,4 +28,8 @@ class CategoryPage extends React.Component {
   }
 }
 
-export default CategoryPage;
+const mapStateToProps = ({ cart: { hiddenCart } }) => ({
+  hiddenCart,
+});
+
+export default connect(mapStateToProps)(CategoryPage);

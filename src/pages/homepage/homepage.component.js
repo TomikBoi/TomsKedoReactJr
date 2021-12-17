@@ -5,10 +5,10 @@ import "./homepage.styles.scss";
 
 class HomePage extends React.Component {
   render() {
-    const { categoryItems } = this.props;
+    const { categoryItems, hiddenCart } = this.props;
 
     return (
-      <div className="homepage-overlay">
+      <div className={`cart-overlay ${!hiddenCart ? 'overlay' : '' }`}>
         <div className="container">
           <div className="homepage">
             <div className="homepage-container">
@@ -30,8 +30,8 @@ class HomePage extends React.Component {
   }
 }
 
-const mapStateToProps = ({ currency: { hiddenCur } }) => ({
-  hiddenCur,
+const mapStateToProps = ({ cart: { hiddenCart } }) => ({
+  hiddenCart,
 });
 
 export default connect(mapStateToProps)(HomePage);

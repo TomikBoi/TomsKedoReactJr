@@ -3,7 +3,9 @@ import {addItemToCart} from './cart.utils'
 import {selectAttributes} from './cart.utils'
 import { removeItemFromCart } from "./cart.utils";
 import { addItemQuantity } from "./cart.utils";
+
 const INITIAL_STATE = {
+  hiddenCart: true,
   cartItems: [],
 };
 
@@ -36,6 +38,16 @@ const cartReducer = (state = INITIAL_STATE, action) => {
           ...state,
           cartItems: removeItemFromCart(state.cartItems, action.payload)
         }
+        case CartActionType.TOGGLE_CART:
+          return {
+            ...state,
+            hiddenCart: !state.hiddenCart
+          }
+        case CartActionType.CLOSE_CART:
+          return {
+            ...state,
+            hiddenCart: true
+          }
     default:
      return state
   }
