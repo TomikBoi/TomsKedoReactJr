@@ -1,4 +1,5 @@
 import React from "react";
+import DOMPurify from "dompurify";
 import { connect } from "react-redux";
 import { addItem } from "../../redux/cart/cart.actions";
 import { getCurrencySymbol } from "../../helper/getCurrencySymbol";
@@ -154,7 +155,7 @@ class ProductPage extends React.Component {
               </form>
               <p
                 className="product-description"
-                dangerouslySetInnerHTML={{ __html: product.description }}
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(product.description) }}
               />
             </div>
           </div>
