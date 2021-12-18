@@ -23,7 +23,7 @@ class GallerySlider extends React.Component {
 
     return (
       <>
-        <img className={classes} src={images[this.state.index]} />
+        <img className={classes} src={images[this.state.index]} alt="product"/>
         {this.state.index !== 0 ? (
           <button
             className="gallery-slider-image-btn prev"

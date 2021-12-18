@@ -10,13 +10,7 @@ class CartIcon extends React.Component {
   render() {
     const {itemCount, dispatch, hiddenCart} = this.props 
 
-    const handleClick = () => {
-      // document.querySelector(".cart-icon-dropdown").classList.toggle("hidden");
-      // document.querySelector('.homepage-overlay').classList.toggle('overlay')
-    };
-
     const handleBlur = e => {
-      console.log(e)
       if (!e.currentTarget.contains(e.relatedTarget)) {
         dispatch(closeCart())
       }

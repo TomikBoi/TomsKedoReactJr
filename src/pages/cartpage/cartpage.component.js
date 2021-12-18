@@ -16,7 +16,7 @@ class CartPage extends React.Component {
             <p>Please add a product</p>
           ) : (
             cartItems.map((cartItem) => (
-              <CartPageItem key={cartItem.id} cartItem={cartItem} />
+              <CartPageItem key={cartItem.uniqueID} cartItem={cartItem} />
             ))
           )}
           <div className="cartpage-total-wrapper">

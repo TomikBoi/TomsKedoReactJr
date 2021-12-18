@@ -21,7 +21,7 @@ class CartPageItem extends React.Component {
       clearItemFromCart,
     } = this.props;
     return (
-      <div key={cartItem.id}>
+      <div>
         <div className="cartpage-cart-wrapper">
           <div className="cartpage-cart-wrapper-left">
             <div>
@@ -42,7 +42,7 @@ class CartPageItem extends React.Component {
                       <div key={item.id}>
                         <input
                           type="radio"
-                          id={`${item.id}-${product.id}-${cartItem.id}`}
+                          id={`${item.id}-${product.id}-${cartItem.uniqueID}`}
                           value={item.value}
                           checked={
                             cartItem.selectedAttribute[`${product.id}`] ===
@@ -63,7 +63,7 @@ class CartPageItem extends React.Component {
                               ? { backgroundColor: `${item.value}` }
                               : null
                           }
-                          htmlFor={`${item.id}-${product.id}-${cartItem.id}`}
+                          htmlFor={`${item.id}-${product.id}-${cartItem.uniqueID}`}
                         >
                           {product.type === "swatch" ? null : item.value}
                         </label>

@@ -37,7 +37,7 @@ class CartItem extends React.Component {
                     <div key={item.id}>
                       <input
                         type="radio"
-                        id={`${item.id}-${product.id}-${cartItem.id}`}
+                        id={`${item.id}-${product.id}-${cartItem.uniqueID}`}
                         value={item.value}
                         checked={
                           cartItem.selectedAttribute[`${product.id}`] ===
@@ -58,7 +58,7 @@ class CartItem extends React.Component {
                             ? { backgroundColor: `${item.value}` }
                             : null
                         }
-                        htmlFor={`${item.id}-${product.id}-${cartItem.id}`}
+                        htmlFor={`${item.id}-${product.id}-${cartItem.uniqueID}`}
                       >
                         {product.type === "swatch" ? null : item.value}
                       </label>
