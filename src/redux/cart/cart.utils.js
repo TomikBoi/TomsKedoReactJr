@@ -41,14 +41,15 @@ export const addItemToCart = (cartItems, cartItemAddAttribute) => {
   );
 
   if (existingCartItem) {
-    return cartItems.map((cartItem) =>
+    return cartItems.map((cartItem) => (
       cartItem.id === newItem.id &&
       JSON.stringify(cartItem.selectedAttribute) === JSON.stringify(attribute)
         ? {
             ...cartItem,
             quantity: cartItem.quantity + 1,
           }
-        : cartItem
+        : cartItem 
+    )
     );
   }
 
