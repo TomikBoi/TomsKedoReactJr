@@ -11,8 +11,17 @@ const currencyReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         currency: action.payload,
-        hiddenCur: true
       };
+    case CurrencyActionType.TOGGLE_CURRENCY:
+        return {
+          ...state,
+          hiddenCur: !state.hiddenCur
+        }
+      case CurrencyActionType.CLOSE_CURRENCY:
+        return {
+          ...state,
+          hiddenCur: true
+        }
 
     default:
       return state;

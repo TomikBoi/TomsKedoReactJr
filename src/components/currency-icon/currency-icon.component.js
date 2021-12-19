@@ -1,23 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getCurrencySymbol } from "../../helper/getCurrencySymbol";
+import { toggleCurrency, closeCurrency } from "../../redux/currency/currency.actions";
 import CurrencyDropdownContainer from "../currency-dropdown/currency-dropdown.container";
 
 import "./currency-icon.styles.scss";
 
 class CurrencyIcon extends React.Component {
   render() {
-    const { currency } = this.props;
-
-    const handleClick = (e) => {
-      e.target.classList.toggle("currency-icon-dropdown-arrow-down");
-      document.querySelector(".currency-dropdown").classList.toggle("hidden");
-    };
+    const { currency, hiddenCur, dispatch } = this.props;
 
     const handleBlur = e => {
       if (!e.currentTarget.contains(e.relatedTarget)) {
-        document.querySelector('.currency-icon-dropdown').classList.add("currency-icon-dropdown-arrow-down");
-        document.querySelector(".currency-dropdown").classList.add("hidden");
+        dispatch(closeCurrency())
       }
     }
     return (
@@ -25,21 +20,22 @@ class CurrencyIcon extends React.Component {
         <span className="currency-icon">{getCurrencySymbol(currency)}</span>{" "}
         <span>
           <i
-            className={`currency-icon-dropdown currency-icon-dropdown-arrow-down`}
-            onClick={(e) => handleClick(e)}
+            className={`currency-icon-dropdown currency-icon-dropdown-arrow-${hiddenCur}`}
+            onClick={() => dispatch(toggleCurrency())}
             
           ></i>
         </span>
-        <div className="currency-dropdown hidden">
-          <CurrencyDropdownContainer />
+        <div className="currency-dropdown">
+        {!hiddenCur ? <CurrencyDropdownContainer /> : ''}
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ currency: { currency } }) => ({
+const mapStateToProps = ({ currency: { currency, hiddenCur } }) => ({
   currency,
+  hiddenCur
 });
 
 export default connect(mapStateToProps)(CurrencyIcon);
