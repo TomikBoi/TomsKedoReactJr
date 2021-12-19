@@ -88,12 +88,12 @@ class CartItem extends React.Component {
         </div>
         <div className="img-container">
           <GallerySlider images={cartItem.gallery} classes={"img"} />
-          <button
+          <span
             className="img-remove-item"
             onClick={() => clearItemFromCart(cartItem)}
           >
             X
-          </button>
+          </span>
         </div>
       </div>
     );
