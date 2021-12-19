@@ -17,7 +17,6 @@ class CartDropdown extends React.Component {
       dispatch(closeCart())
     };
 
-
     return (
       <div className='cart-dropdown'>
         <p className='cart-dropdown-text'><span>My Bag, </span>{itemCount} items</p>

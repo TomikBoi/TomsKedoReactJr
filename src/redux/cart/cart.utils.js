@@ -29,19 +29,24 @@ export const selectAttributes = (cartItems, cartItemAddAttribute) => {
         : cartItem
     );
   }
-}
+};
 
 export const addItemToCart = (cartItems, cartItemAddAttribute) => {
   const [newItem, attribute] = cartItemAddAttribute;
-  
-  const existingCartItem = cartItems.find((cartItem) => (cartItem.id === newItem.id && JSON.stringify(cartItem.selectedAttribute) === JSON.stringify(attribute)))
-  
+
+  const existingCartItem = cartItems.find(
+    (cartItem) =>
+      cartItem.id === newItem.id &&
+      JSON.stringify(cartItem.selectedAttribute) === JSON.stringify(attribute)
+  );
+
   if (existingCartItem) {
     return cartItems.map((cartItem) =>
-    cartItem.id === newItem.id && JSON.stringify(cartItem.selectedAttribute) === JSON.stringify(attribute)
+      cartItem.id === newItem.id &&
+      JSON.stringify(cartItem.selectedAttribute) === JSON.stringify(attribute)
         ? {
             ...cartItem,
-            quantity: cartItem.quantity + 1
+            quantity: cartItem.quantity + 1,
           }
         : cartItem
     );
@@ -49,7 +54,12 @@ export const addItemToCart = (cartItems, cartItemAddAttribute) => {
 
   return [
     ...cartItems,
-    { ...newItem, quantity: 1, selectedAttribute: { ...attribute }, uniqueID: createId() }
+    {
+      ...newItem,
+      quantity: 1,
+      selectedAttribute: { ...attribute },
+      uniqueID: createId(),
+    },
   ];
 };
 
@@ -59,7 +69,9 @@ export const removeItemFromCart = (cartItems, cartItemToRemove) => {
   );
 
   if (existingCartItem.quantity === 1) {
-    return cartItems.filter((cartItem) => cartItem.uniqueID !== cartItemToRemove.uniqueID);
+    return cartItems.filter(
+      (cartItem) => cartItem.uniqueID !== cartItemToRemove.uniqueID
+    );
   }
 
   return cartItems.map((cartItem) =>
