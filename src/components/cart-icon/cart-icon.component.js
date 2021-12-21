@@ -10,7 +10,6 @@ class CartIcon extends React.Component {
     const { itemCount, dispatch, hiddenCart } = this.props;
 
     const handleBlur = (e) => {
-      console.log(e);
       if (
         !e.target.contains(e.relatedTarget)
       ) {
