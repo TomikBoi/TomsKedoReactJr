@@ -16,13 +16,12 @@ class CurrencyIcon extends React.Component {
       }
     }
     return (
-      <div className="currency" onBlur={(e) => handleBlur(e)} tabIndex={0}>
+      <div className="currency" onBlur={(e) => handleBlur(e)}  onClick={() => dispatch(toggleCurrency())}
+      tabIndex={0}>
         <span className="currency-icon">{getCurrencySymbol(currency)}</span>{" "}
         <span>
           <i
             className={`currency-icon-dropdown currency-icon-dropdown-arrow-${hiddenCur}`}
-            onClick={() => dispatch(toggleCurrency())}
-            
           ></i>
         </span>
         <div className="currency-dropdown">

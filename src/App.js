@@ -5,7 +5,6 @@ import HomePageContainer from "./pages/homepage/homepage.container";
 import ProductPageContainer from "./pages/productpage/productpage.container";
 import CartPage from "./pages/cartpage/cartpage.component";
 import Header from "./components/header/header.component";
-import Footer from "./components/footer/footer.component";
 import "./App.css";
 
 class App extends React.Component {
@@ -27,7 +26,6 @@ class App extends React.Component {
             component={ProductPageContainer}
           />
         </Switch>
-        <Footer />
       </div>
     );
   }

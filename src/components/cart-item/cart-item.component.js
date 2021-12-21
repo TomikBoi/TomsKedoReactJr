@@ -1,5 +1,4 @@
 import React from "react";
-import CustomButton from "../custom-button/custom-button.component";
 import { connect } from "react-redux";
 import { selectAttribute } from "../../redux/cart/cart.actions";
 import { addItemQuantity } from "../../redux/cart/cart.actions";
@@ -70,21 +69,19 @@ class CartItem extends React.Component {
           </form>
         </div>
         <div className="quantity">
-          <CustomButton
-            buttonStyle={"btn-item-action"}
-            buttonSize={"btn-small"}
+          <span
+          className="btn btn-item-action btn-small"
             onClick={() => addItemQuantity(cartItem)}
           >
             <span className="quantity-btn">+</span>
-          </CustomButton>
+          </span>
           <p>{cartItem.quantity}</p>
-          <CustomButton
-            buttonStyle={"btn-item-action"}
-            buttonSize={"btn-small"}
+          <span
+            className="btn btn-item-action btn-small" 
             onClick={() => removeItem(cartItem)}
           >
-            <span className="quantity-btn">-</span>
-          </CustomButton>
+            <span className="quantity-btn" >-</span>
+          </span>
         </div>
         <div className="img-container">
           <GallerySlider images={cartItem.gallery} classes={"img"} />

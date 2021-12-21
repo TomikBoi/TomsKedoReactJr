@@ -1,6 +1,8 @@
 @import "../../helper/variables";
 .currency {
-  cursor: default;
+  cursor: pointer;
+  position: relative;
+  
   &-icon {
     font-weight: 500;
     font-size: 18px;
@@ -14,8 +16,6 @@
   display: inline-block;
   padding: 3px;
   margin-left: 10px;
-  position: relative;
-  cursor: pointer;
   transform: rotate(225deg);
 
   &-arrow-true {

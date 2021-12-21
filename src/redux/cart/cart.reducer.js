@@ -3,6 +3,7 @@ import {addItemToCart} from './cart.utils'
 import {selectAttributes} from './cart.utils'
 import { removeItemFromCart } from "./cart.utils";
 import { addItemQuantity } from "./cart.utils";
+import { addItemNoAtribute } from "./cart.utils";
 
 const INITIAL_STATE = {
   hiddenCart: true,
@@ -48,6 +49,11 @@ const cartReducer = (state = INITIAL_STATE, action) => {
             ...state,
             hiddenCart: true
           }
+          case CartActionType.ADD_ITEM_WITHOUT_ATTRIBUTES: 
+            return {
+              ...state,
+              cartItems: addItemNoAtribute(state.cartItems, action.payload)
+            }
     default:
      return state
   }

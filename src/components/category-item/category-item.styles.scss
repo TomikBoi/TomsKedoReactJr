@@ -59,20 +59,13 @@
     }
   }
   &-buy-icon {
-    position: absolute;
-    display: none;
-    right: 20px;
-    bottom: -26px;
     width: 52px;
     height: 52px;
-    display: flex;
-    color: white;
-    opacity: 0;
-    justify-content: center;
-    align-items: center;
-    background-color: green;
-    border-radius: 50%;
-    transition: opacity 250ms ease;
+    position: absolute;
+    right: 17px;
+    bottom: -30px;
+    display: none;
+    cursor: pointer;
   }
 
   &:hover {

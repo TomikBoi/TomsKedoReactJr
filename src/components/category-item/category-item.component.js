@@ -5,11 +5,12 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { getCurrencySymbol } from "../../helper/getCurrencySymbol";
 import getPrice from "../../helper/getPrice";
+import { addItemWithoutAttribute } from "../../redux/cart/cart.actions";
 import "./category-item.styles.scss";
 
 class CategoryItem extends React.Component {
   render() {
-    const { item, currency, history } = this.props;
+    const { item, currency, dispatch } = this.props;
     return (
       <div className={`card ${!item.inStock ? "card--OutOfStock" : ''}`}>
         <div className="card-presentation">
@@ -25,7 +26,7 @@ class CategoryItem extends React.Component {
           {item.inStock ? (
             <BuyIcon
               className="card-buy-icon"
-              onClick={() => history.push(`/product/${item.id}`)}
+              onClick={() => dispatch(addItemWithoutAttribute(item))}
             />
           ) : null}
         </div>

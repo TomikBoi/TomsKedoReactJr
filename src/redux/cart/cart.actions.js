@@ -32,3 +32,7 @@ export const toggleCart = () => ({
 export const closeCart = () => ({
   type: CartActionType.CLOSE_CART
 })
+export const addItemWithoutAttribute = (item) => ({
+  type: CartActionType.ADD_ITEM_WITHOUT_ATTRIBUTES,
+  payload: item
+}) 

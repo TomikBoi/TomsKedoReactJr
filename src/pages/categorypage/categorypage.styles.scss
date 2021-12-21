@@ -1,14 +1,11 @@
 @import "../../helper/variables";
 
-.category-container {
-  margin-bottom: 25px;
-}
-
 .category-items {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   grid-gap: 25px;
   gap: 25px;
+  margin-bottom: 25px;
 }
 
 .category-text {

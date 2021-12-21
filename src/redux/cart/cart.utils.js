@@ -41,15 +41,14 @@ export const addItemToCart = (cartItems, cartItemAddAttribute) => {
   );
 
   if (existingCartItem) {
-    return cartItems.map((cartItem) => (
+    return cartItems.map((cartItem) =>
       cartItem.id === newItem.id &&
       JSON.stringify(cartItem.selectedAttribute) === JSON.stringify(attribute)
         ? {
             ...cartItem,
             quantity: cartItem.quantity + 1,
           }
-        : cartItem 
-    )
+        : cartItem
     );
   }
 
@@ -80,6 +79,48 @@ export const removeItemFromCart = (cartItems, cartItemToRemove) => {
       ? { ...cartItem, quantity: cartItem.quantity - 1 }
       : cartItem
   );
+};
+
+export const addItemNoAtribute = (cartItems, cartItemToAdd) => {
+  cartItemToAdd.attributes.map((item) => (
+    item.items.map((attribute, index) =>
+      index === 0
+        ? (cartItemToAdd.selectedAttribute = {
+            ...cartItemToAdd.selectedAttribute,
+            ...{ [item.name]: [attribute.value][0] }
+          })
+        : ""
+    )
+  ));
+
+  const existingCartItem = cartItems.find(
+    (cartItem) =>
+      cartItem.id === cartItemToAdd.id &&
+      JSON.stringify(cartItem.selectedAttribute) ===
+        JSON.stringify(cartItemToAdd.selectedAttribute)
+  );
+
+  if (existingCartItem) {
+    return cartItems.map((cartItem) =>
+      cartItem.id === cartItemToAdd.id &&
+      JSON.stringify(cartItem.selectedAttribute) ===
+        JSON.stringify(cartItemToAdd.selectedAttribute)
+        ? {
+            ...cartItem,
+            quantity: cartItem.quantity + 1,
+          }
+        : cartItem
+    );
+  }
+
+  return [
+    ...cartItems,
+    {
+      ...cartItemToAdd,
+      quantity: 1,
+      uniqueID: createId(),
+    },
+  ];
 };
 
 function createId() {
