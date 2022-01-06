@@ -25,22 +25,22 @@ class GallerySlider extends React.Component {
       <>
         <img className={classes} src={images[this.state.index]} alt="product"/>
         {this.state.index !== 0 ? (
-          <button
+          <span
             className="gallery-slider-image-btn prev"
             onClick={() => prevImage()}
           >
             &#10094;
-          </button>
+          </span>
         ) : (
           ""
         )}
         {this.state.index !== images.length - 1 ? (
-          <button
+          <span
             className="gallery-slider-image-btn next"
             onClick={() => nextImage()}
           >
             &#10095;
-          </button>
+          </span>
         ) : (
           ""
         )}
